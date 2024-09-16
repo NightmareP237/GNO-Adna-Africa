@@ -404,7 +404,7 @@ TextStyle bodyLightStyle(Color c) => TextStyle(
     color: c);
 TextStyle footnoteStyle(Color c) => TextStyle(
     fontFamily: 'DMSans',
-    fontWeight: FontWeight.w300,
+    fontWeight: FontWeight.w700,
     fontSize: 12,
     // height: 0.32,
     color: c);
@@ -416,8 +416,8 @@ TextStyle footfilterStyle(Color c) => TextStyle(
     color: c);
 TextStyle footboldStyle(Color c) => TextStyle(
     fontFamily: 'DMSans',
-    fontWeight: FontWeight.w700,
-    fontSize: 14,
+    fontWeight: FontWeight.w800,
+    fontSize: 12,
     // height: 0.32,
     color: c);
 TextStyle SeetingStyle(Color c) => TextStyle(
@@ -463,14 +463,14 @@ class PopularAccount extends StatelessWidget {
     required this.image,
     this.rate = 1,
     required this.brandName,
-    required this.title,
-    required this.location,
+    // required this.title,
+    // required this.location,
     this.priceAfetDiscount,
     this.dicountpercent,
     required this.press,
     this.isAsset=false
   });
-  final String image, brandName, title, location;
+  final String image, brandName;
   final double? priceAfetDiscount;
   final int? dicountpercent;
   final int rate;
@@ -556,11 +556,7 @@ class PopularAccount extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.check,
-                        color: Colors.white,
-                        size: 18,
-                      )
+                      Text("Pro ",style: footnoteStyle(Theme.of(context).textTheme.headlineSmall!.color!),),
                     ],
                   ),
                 ),
@@ -575,15 +571,15 @@ class PopularAccount extends StatelessWidget {
                       .copyWith(fontSize: 12),
                 ),
                 const SizedBox(height: defaultPadding / 2),
-                Text(
-                  title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleSmall!
-                      .copyWith(fontSize: 12),
-                ),
+                // Text(
+                //   title,
+                //   maxLines: 2,
+                //   overflow: TextOverflow.ellipsis,
+                //   style: Theme.of(context)
+                //       .textTheme
+                //       .titleSmall!
+                //       .copyWith(fontSize: 12),
+                // ),
                 // const Spacer(),
                 // priceAfetDiscount != null
                 //     ? Row(
@@ -611,27 +607,27 @@ class PopularAccount extends StatelessWidget {
                 //         ],
                 //       )
                 //     :
-                SizedBox(
-                  height: defaultPadding / 2,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text('🇨🇲'),
-                    const SizedBox(
-                      width: defaultPadding / 4,
-                    ),
-                    Text(
-                      "$location",
-                      style: const TextStyle(
-                        color: Color(0xFF31B0D8),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
+                // SizedBox(
+                //   height: defaultPadding / 2,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   crossAxisAlignment: CrossAxisAlignment.center,
+                //   children: [
+                //     const Text('🇨🇲'),
+                //     const SizedBox(
+                //       width: defaultPadding / 4,
+                //     ),
+                //     Text(
+                //       "$location",
+                //       style: const TextStyle(
+                //         color: Color(0xFF31B0D8),
+                //         fontWeight: FontWeight.w500,
+                //         fontSize: 12,
+                //       ),
+                //     ),
+                //   ],
+                // ),
               ],
             ),
           ),

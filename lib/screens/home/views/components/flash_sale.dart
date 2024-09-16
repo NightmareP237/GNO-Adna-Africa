@@ -49,7 +49,7 @@ class FlashSale extends StatelessWidget {
               ),
               child: ProductCard(
                  press1: (){},
-                      press2: (){},
+                 press2: (){},
                 image: demoFlashSaleProducts[index].image,
                 brandName: demoFlashSaleProducts[index].brandName,
                 title: demoFlashSaleProducts[index].title,

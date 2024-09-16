@@ -42,8 +42,8 @@ class PopularProducts extends StatelessWidget {
               child: PopularAccount(
                 image: exemple[index][0],
                 brandName: exemple[index][1],
-                title: exemple[index][2],
-                location: exemple[index][3],
+                // title: exemple[index][2],
+                // location: exemple[index][3],
                 rate: index,
                 // priceAfetDiscount: demoPopularProducts[index].priceAfetDiscount,
                 // dicountpercent: demoPopularProducts[index].dicountpercent,

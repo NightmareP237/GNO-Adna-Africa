@@ -19,7 +19,19 @@ const grandisExtendedFont = "Grandis Extended";
 // On color 80, 60.... those means opacity
 
 const Color primaryColor = Color.fromARGB(255, 75, 178, 79);
+const SizedBox sizedBox10 = SizedBox(height: 10,);
+const SizedBox sizedBox5 = SizedBox(height: 5,);
+const SizedBox sizedBox15 = SizedBox(height: 15,);
+const SizedBox sizedBox20 = SizedBox(height: 20,);
+const SizedBox sizedBox40 = SizedBox(height: 40,);
+const SizedBox sizedBoxWidth20 = SizedBox(width: 20,);
 
+const Color gPrimaryColor = Color(0xff294D9C);
+const Color gSecondaryColor = Color(0xFF77246C);
+const Color gWhite = Color(0xffffffff);
+const Color gBlack = Color(0xFF000000);
+const Color gOffBlack = Colors.black26;
+const Color gOffWhite = Color(0xffE3E3E3);
 const MaterialColor primaryMaterialColor =
     MaterialColor(0xFF20FF76, <int, Color>{
   50: Color.fromARGB(255, 232, 245, 233),
@@ -69,6 +81,19 @@ const double defaultPadding = 16.0;
 const double defaultBorderRadious = 12.0;
 const Duration defaultDuration = Duration(milliseconds: 300);
 
+ List ListofExperience = [
+    "Electronique",
+    "Numérique",
+    "Banque",
+    "Travaux publics",
+    "Prestation de service",
+    "Influenceur",
+    "Hôtellerie",
+    "Restauration",
+    "Automobile",
+    "Agriculture",
+    "Alimentaire",
+  ];
 final passwordValidator = MultiValidator([
   RequiredValidator(errorText: 'Password is required'),
   MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),

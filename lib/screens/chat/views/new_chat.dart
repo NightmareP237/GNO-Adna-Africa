@@ -32,13 +32,12 @@ class _NewChatState extends State<NewChat> {
         value.docs.forEach((element) {
           print(element.data());
           print(element.id);
-          UserInfoView.fromDocumentSnapshot(element, element.id).then((value) {
+         var value= UserInfoView.fromDocumentSnapshot(element, element.id);
             setState(() {
               print(value.email);
               users.add(value);
               print(users);
             });
-          });
           users.shuffle();
           searchUsers = users;
           setState(() {

@@ -9,6 +9,7 @@ import 'package:adna/route/route_constants.dart';
 import 'package:adna/theme/input_decoration_theme.dart';
 import 'package:adna/widgets/loader-component.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,17 +27,6 @@ class PostPageScreen extends StatefulWidget {
 
 class _PostPageScreenState extends State<PostPageScreen> {
   List ListofLocation = ["🇫🇷 France", "🇨🇲 Cameroun"];
-  List ListofSectors = [
-    "Plomberie",
-    "Electricite",
-    "Depannage",
-    "Agro-Alimentaire",
-    "Avocat",
-    "Product designer",
-    "Agent de Netoyage",
-    "Prestation de service",
-    "Electronique"
-  ];
   AuthServices auth = AuthServices();
   User? user;
   Future<User?> getuser() async {
@@ -70,6 +60,7 @@ class _PostPageScreenState extends State<PostPageScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
     changeProfile({required bool isCamera}) async {
       try {
         Navigator.pop(context);
@@ -94,14 +85,11 @@ class _PostPageScreenState extends State<PostPageScreen> {
         loading = false;
       });
     }
-
     return Stack(
       children: [
         Scaffold(
-          body: (  FirebaseAuth
-                                          .instance.currentUser!.displayName ==
-                                      null|| FirebaseAuth
-                                          .instance.currentUser!.displayName!.isEmpty)
+          body: (FirebaseAuth.instance.currentUser!.displayName == null ||
+                  FirebaseAuth.instance.currentUser!.displayName!.isEmpty)
               ? Container(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height / 3.2,
@@ -314,21 +302,21 @@ class _PostPageScreenState extends State<PostPageScreen> {
 
                                       isExpanded: true,
                                       items: List.generate(
-                                          ListofSectors.length,
+                                          ListofExperience.length,
                                           (index) => DropdownMenuItem<String>(
                                                 onTap: () {
                                                   setState(() {
                                                     // loading = true;
                                                   });
                                                 },
-                                                value: ListofSectors[index]
+                                                value: ListofExperience[index]
                                                     .toString(),
                                                 child: Padding(
                                                   padding: const EdgeInsets
                                                       .symmetric(
                                                       horizontal: 8.0),
                                                   child: Text(
-                                                    ListofSectors[index]
+                                                    ListofExperience[index]
                                                         .toString(),
                                                     style: bodyStyle(
                                                         Theme.of(context)
@@ -775,8 +763,7 @@ class _PostPageScreenState extends State<PostPageScreen> {
                               width: double.infinity,
                               height: 150,
                               decoration: BoxDecoration(
-                                image: 
-                                    image == null
+                                image: image == null
                                     ? null
                                     : DecorationImage(
                                         image: FileImage(File(image!.path)),
@@ -816,9 +803,8 @@ class _PostPageScreenState extends State<PostPageScreen> {
                                           "Prendre une image de gallerie ou de l'appareil photo",
                                           style: Theme.of(context)
                                               .textTheme
-                                              .labelSmall!.copyWith(
-                                                color: Colors.white
-                                              ),
+                                              .labelSmall!
+                                              .copyWith(color: Colors.white),
                                         ),
                                       ],
                                     ),
@@ -827,10 +813,10 @@ class _PostPageScreenState extends State<PostPageScreen> {
                         ]),
                   ),
                 ),
-          floatingActionButton:(  FirebaseAuth
-                                          .instance.currentUser!.displayName ==
-                                      null|| FirebaseAuth
-                                          .instance.currentUser!.displayName!.isEmpty)
+          floatingActionButton: (FirebaseAuth
+                          .instance.currentUser!.displayName ==
+                      null ||
+                  FirebaseAuth.instance.currentUser!.displayName!.isEmpty)
               ? null
               : FloatingActionButton(
                   onPressed: () {
@@ -841,9 +827,13 @@ class _PostPageScreenState extends State<PostPageScreen> {
                       setState(() {
                         loading = true;
                       });
+                      SendNotificationByHoby(
+                          [secteur.trim()], description.text.trim());
                       Firebase.uploadImageProfile(image!, context).then((val) {
                         if (val.isNotEmpty) {
-                           FirebaseFirestore.instance.collection('historique').add({
+                          FirebaseFirestore.instance
+                              .collection('historique')
+                              .add({
                             "description": description.text.trim(),
                             'secteur': secteur.trim(),
                             'location': location.trim(),
@@ -851,7 +841,8 @@ class _PostPageScreenState extends State<PostPageScreen> {
                             "uid": user?.uid.toString(),
                             "timestamp":
                                 (DateTime.now().millisecondsSinceEpoch / 1000)
-                                    .round()
+                                    .round(),
+                                    "favorites":[],
                           });
                           FirebaseFirestore.instance.collection('posts').add({
                             "description": description.text.trim(),
@@ -861,7 +852,8 @@ class _PostPageScreenState extends State<PostPageScreen> {
                             "uid": user?.uid.toString(),
                             "timestamp":
                                 (DateTime.now().millisecondsSinceEpoch / 1000)
-                                    .round()
+                                    .round(),
+                                    "favorites":[],
                           }).then((value) {
                             setState(() {
                               description.text = location = secteur = '';
@@ -898,5 +890,28 @@ class _PostPageScreenState extends State<PostPageScreen> {
         if (loading) LoadingComponent()
       ],
     );
+  }
+
+  static Future<bool> SendNotificationByHoby(
+      List<String> experience, String annonce) async {
+    try {
+      HttpsCallable callable = FirebaseFunctions.instance.httpsCallable(
+        "sendNotificationHoby",
+        options: HttpsCallableOptions(
+          timeout: const Duration(seconds: 5),
+        ),
+      );
+      final response = await callable.call(
+        <String, dynamic>{
+        'interests': experience,
+        'annonce': annonce,
+      });
+      print('result is ${response.data ?? 'No data came back'}');
+      if (response.data == null) return false;
+      return true;
+    }  on FirebaseFunctionsException catch (e) {
+      print("this is the error $e");
+      return false;
+    }
   }
 }

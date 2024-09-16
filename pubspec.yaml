@@ -51,6 +51,11 @@ dependencies:
   cloud_firestore: ^4.17.5
   url_launcher: ^6.3.0
   syncfusion_flutter_datepicker: ^26.1.41
+  firebase_messaging: ^14.9.4
+  flutter_local_notifications: ^17.2.2
+  cloud_functions: ^4.7.6
+  share_plus: ^10.0.0
+  dynamic_tabbar: ^1.0.7
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +87,7 @@ flutter:
     - assets/Illustration/
     - assets/logo/
     - assets/fonts/
+    - assets/adna-hd.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

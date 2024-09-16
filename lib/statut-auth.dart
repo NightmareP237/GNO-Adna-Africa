@@ -17,10 +17,10 @@ class StatutAuth extends StatefulWidget {
 class _StatutAuthState extends State<StatutAuth> {
   AuthServices auth = AuthServices();
   User? user;
-  String process='';
-  Future<User?> getuser() async {
-    return user = await auth.user;
-  }
+  String process = '';
+  // Future<User?> getuser() async {
+  //   return user = auth.currentUser;
+  // }
 
   Future<String> GetProcessing() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -37,18 +37,23 @@ class _StatutAuthState extends State<StatutAuth> {
         process = value;
       });
     });
-      getuser().then((us) {
-        setState(() {
-          user = us;
-        });
-      });
+    // getuser().then((us) {
+    //   setState(() {
+    //     user = us;
+    //   });
+    // });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return (user == null && process.isEmpty)
-        ? const OnBordingScreen()
+    print(FirebaseAuth.instance.currentUser);
+    return 
+    (FirebaseAuth.instance.currentUser == null 
+    // && process.isEmpty
+    )
+        ? 
+        const OnBordingScreen()
         : const EntryPoint();
   }
 }

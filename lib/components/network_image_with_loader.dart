@@ -28,7 +28,7 @@ class NetworkImageWithLoader extends StatelessWidget {
       child: CachedNetworkImage(
         cacheKey: src,
         width: isprofil?60:null,
-        height:expand?double.infinity : isprofil?60:94,
+        height:expand?double.infinity : isprofil?60:100,
         fit: fit,
         imageUrl: src,
         imageBuilder: (context, imageProvider) => Container(

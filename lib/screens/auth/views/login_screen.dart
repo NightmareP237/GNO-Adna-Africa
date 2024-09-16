@@ -2,6 +2,9 @@
 import 'package:adna/database/Auth.dart';
 import 'package:adna/entry_point.dart';
 import 'package:adna/widgets/loader-component.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:adna/constants.dart';
@@ -20,8 +23,20 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  bool loading = false,obscureText=false;
+  bool loading = false, obscureText = false;
   String email = '', password = '';
+  String? fcmToken;
+  @override
+  void initState() {
+    // TODO: implement initState
+    FirebaseMessaging.instance.getToken().then((value) {
+      setState(() {
+        fcmToken = value;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -96,35 +111,34 @@ class _LoginScreenState extends State<LoginScreen> {
                               onSaved: (pass) {
                                 // Password
                               },
-                              
                               validator: passwordValidator.call,
                               obscureText: obscureText,
                               decoration: InputDecoration(
-                                 suffixIcon: InkWell(
-                              onTap: () {
-                                setState(() {
-                                  obscureText = !obscureText;
-                                });
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: defaultPadding * 0.75),
-                                child: SvgPicture.asset(
-                                  obscureText
-                                      ? "assets/icons/eye.svg"
-                                      : "assets/icons/eye_close.svg",
-                                  height: 24,
-                                  width: 24,
-                                  colorFilter: ColorFilter.mode(
-                                      Theme.of(context)
-                                          .textTheme
-                                          .bodyLarge!
-                                          .color!
-                                          .withOpacity(0.3),
-                                      BlendMode.srcIn),
+                                suffixIcon: InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      obscureText = !obscureText;
+                                    });
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: defaultPadding * 0.75),
+                                    child: SvgPicture.asset(
+                                      obscureText
+                                          ? "assets/icons/eye.svg"
+                                          : "assets/icons/eye_close.svg",
+                                      height: 24,
+                                      width: 24,
+                                      colorFilter: ColorFilter.mode(
+                                          Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge!
+                                              .color!
+                                              .withOpacity(0.3),
+                                          BlendMode.srcIn),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
                                 hintText: "Mot de passe",
                                 prefixIcon: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -175,6 +189,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   .signIn(email.trim(), password.trim())
                                   .then((val) async {
                                 if (val) {
+                                  FirebaseFirestore.instance
+                                      .collection('users')
+                                      .doc(FirebaseAuth
+                                          .instance.currentUser!.uid)
+                                      .update({
+                                    "fcmToken": fcmToken,
+                                  });
                                   setState(() {
                                     loading = !val;
                                   });
@@ -199,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     loading = false;
                                   });
                                   showAlertDialog(
-                                    isError: true,
+                                      isError: true,
                                       context: context,
                                       title: "Erreur",
                                       body:

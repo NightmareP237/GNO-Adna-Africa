@@ -58,13 +58,12 @@ class _HomeChatState extends State<HomeChat> {
         value.docs.forEach((element) {
           print(element.data());
           print(element.id);
-          UserInfoView.fromDocumentSnapshot(element, element.id).then((value) {
+        var value =  UserInfoView.fromDocumentSnapshot(element, element.id);
             setState(() {
               print(value.email);
               users.add(value);
               print(users);
             });
-          });
           setState(() {
             loading = false;
           });
@@ -300,21 +299,14 @@ class _HomeChatState extends State<HomeChat> {
                                           snapshot.data!.docs.length,
                                           (index) => InkWell(
                                             onTap: () {
+                                       
                                               Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (_) => ChatPage(
-                                                          userName: snapshot
-                                                                  .data!
-                                                                  .docs[index]
-                                                              ['name'],
-                                                          image: snapshot.data!
-                                                                  .docs[index]
-                                                              ['image'],
-                                                          receiver: snapshot
-                                                                  .data!
-                                                                  .docs[index]
-                                                              ['receiver'])));
+                                                       user: users[index]
+                                                        )
+                                                         ));
                                             },
                                             child: Padding(
                                               padding:

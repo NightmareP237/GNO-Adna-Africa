@@ -23,12 +23,15 @@ class EditUserInfoScreen extends StatefulWidget {
   UserInfoView userInfo = UserInfoView(
     birthday: '',
     country: '',
+      fcmToken: '',
     email: '',
     name: '',
     image: '',
     phoneNumber: '',
     entreprise: '',
     keyofentreprise: '',
+    secteur: [],
+    followers: []
   );
   @override
   State<EditUserInfoScreen> createState() => _EditUserInfoScreenState();

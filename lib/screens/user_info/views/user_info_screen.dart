@@ -1,5 +1,6 @@
 // screens/user_info/views/user_info_screen.dart
-import 'package:adna/models/user_model.dart';import 'package:adna/models/user_model.dart';
+import 'package:adna/models/user_model.dart';
+import 'package:adna/models/user_model.dart';
 import 'package:adna/screens/user_info/views/edit_user_info_screen.dart';
 import 'package:adna/statut-auth.dart';
 import 'package:adna/widgets/loader-component.dart';
@@ -20,15 +21,18 @@ class UserInfoScreen extends StatefulWidget {
   State<UserInfoScreen> createState() => _UserInfoScreenState();
 }
 
-
 class _UserInfoScreenState extends State<UserInfoScreen> {
-bool loading = false;
+  bool loading = false;
   UserInfoView userInfo = UserInfoView(
       email: '',
       image: '',
       phoneNumber: '',
+      fcmToken: '',
       country: '',
       name: '',
+       followers:[],
+              share: 0,
+    secteur: [],
       birthday: '');
   Future<void> GetUserInfo() async {
     try {
@@ -40,11 +44,15 @@ bool loading = false;
         setState(() {
           Map<String, dynamic>? doc = value.data();
           userInfo = UserInfoView(
-              email: doc!['email'],
+              fcmToken: doc!['fcmToken'],
+              email: doc['email'],
               image: doc['image'],
               phoneNumber: doc['phoneNumber'],
               country: doc['location'],
               name: doc['name'],
+              secteur: doc['secteur'],
+              followers: doc['followers'],
+              share: doc['share'],
               birthday: doc['date']);
         });
       });

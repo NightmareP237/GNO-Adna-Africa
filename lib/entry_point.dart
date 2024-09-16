@@ -1,7 +1,7 @@
 // entry_point.dart
 import 'package:adna/screens/chat/views/home_chat.dart';
 import 'package:animations/animations.dart';
-import 'package:adna/favorite.dart';
+import 'package:adna/market-place.dart';
 import 'package:adna/post-page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:adna/screens/checkout/views/empty_cart_screen.dart';
@@ -137,12 +137,12 @@ class _EntryPointState extends State<EntryPoint> {
               label: "Accueil",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border,
+              icon: Icon(Icons.store,
                   color: Theme.of(context).brightness == Brightness.light
                       ? Colors.black
                       : Colors.white),
-              activeIcon: Icon(Icons.favorite_border, color: primaryColor),
-              label: "Favories",
+              activeIcon: Icon(Icons.store, color: primaryColor),
+              label: "Market Place",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.add_box_outlined,

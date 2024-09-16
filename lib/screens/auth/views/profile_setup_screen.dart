@@ -5,6 +5,7 @@ import 'package:adna/components/product/product_card.dart';
 import 'package:adna/database/Auth.dart';
 import 'package:adna/database/Firebase.dart';
 import 'package:adna/entry_point.dart';
+import 'package:adna/screens/auth/views/custom-experience.dart';
 import 'package:adna/widgets/loader-component.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -490,7 +491,9 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                             ),
                                           ),
                                           Text(
-                                           date.isEmpty? "Date de naissance (Ex: 24-10-1990)":date,
+                                            date.isEmpty
+                                                ? "Date de naissance (Ex: 24-10-1990)"
+                                                : date,
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium!
@@ -499,7 +502,10 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                         .textTheme
                                                         .bodySmall!
                                                         .color!
-                                                        .withOpacity( date.isEmpty?0.4:1)),
+                                                        .withOpacity(
+                                                            date.isEmpty
+                                                                ? 0.4
+                                                                : 1)),
                                           )
                                         ],
                                       ),
@@ -832,188 +838,22 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                     Text("Veuillez remplir tous les champs"),
                               ));
                             } else {
-                              if (image != null) {
-                                setState(() {
-                                  isUpload = true;
-                                });
-                                AuthServices().signOut().then((val) async {
-                                  SharedPreferences prefs =
-                                      await SharedPreferences.getInstance();
-                                  await prefs.setString('process', "");
-                                  Firebase.uploadImageProfile(image!, context)
-                                      .then((val) {
-                                    if (val.isNotEmpty) {
-                                      AuthServices()
-                                          .signUp(widget.email, widget.password,
-                                              name.trim())
-                                          .then((value) {
-                                        if (value) {
-                                          FirebaseAuth.instance.currentUser!
-                                              .updatePhotoURL(val);
-                                          FirebaseFirestore.instance
-                                              .collection('users')
-                                              .doc(FirebaseAuth
-                                                  .instance.currentUser!.uid
-                                                  .toString())
-                                              .set({
-                                            "email": widget.email,
-                                            'name': name.trim(),
-                                            'date': date.trim(),
-                                            'phoneNumber': phoneNumber.trim(),
-                                            'location': location.trim(),
-                                            'entreprise':
-                                                nameofentreprise.trim(),
-                                            'keyentreprise':
-                                                keyofentreprise.trim(),
-                                            'image': val.trim(),
-                                          }).then((value) async {
-                                            setState(() {
-                                              isUpload = false;
-                                            });
-                                            SharedPreferences prefs =
-                                                await SharedPreferences
-                                                    .getInstance();
-                                            await prefs.setString(
-                                                'process', "final");
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(const SnackBar(
-                                              backgroundColor: Colors.green,
-                                              content: Text(
-                                                "Inscription reussi !",
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                            ));
-                                            FirebaseAuth.instance.currentUser!
-                                                .sendEmailVerification(
-                                                    ActionCodeSettings(
-                                                        url:
-                                                            "https://www.google.com/"))
-                                                .then((value) {
-                                              Navigator.pushAndRemoveUntil(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (_) =>
-                                                          VerificationMethodScreen()),
-                                                  (close) => false);
-                                            });
-                                            print("User Added");
-                                          });
-                                        } else {
-                                          setState(() {
-                                            isUpload = false;
-                                          });
-                                          showAlertDialog(
-                                            context: context,
-                                            title: "Attention",
-                                            body:
-                                                "Ce compte existe deja avec cette addresse email,veuillez en creez un autre",
-                                            isError: true,
-                                          );
-                                        }
-                                      });
-                                    } else {
-                                      setState(() {
-                                        isUpload = false;
-                                      });
-                                      showAlertDialog(
-                                          isError: true,
-                                          context: context,
-                                          title: 'Erreur',
-                                          body:
-                                              'Probleme de connection internet !');
-                                    }
-                                  });
-                                });
-                              } else {
-                                setState(() {
-                                  isUpload = true;
-                                });
-                                AuthServices().signOut().then((val) async {
-                                  SharedPreferences prefs =
-                                      await SharedPreferences.getInstance();
-                                  await prefs.setString('process', "");
-                                  AuthServices()
-                                      .signUp(widget.email, widget.password,
-                                          name.trim())
-                                      .then((value) {
-                                    if (value) {
-                                      FirebaseFirestore.instance
-                                          .collection('users')
-                                          .add({
-                                        "email": widget.email,
-                                        'name': name.trim(),
-                                        'date': date.trim(),
-                                        'phoneNumber': phoneNumber.trim(),
-                                        'location': location.trim(),
-                                        'entreprise': nameofentreprise.trim(),
-                                        'keyentreprise': keyofentreprise.trim(),
-                                        'image': '',
-                                      }).then((value) async {
-                                        setState(() {
-                                          isUpload = false;
-                                        });
-                                        SharedPreferences prefs =
-                                            await SharedPreferences
-                                                .getInstance();
-                                        await prefs.setString(
-                                            'process', "final");
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(const SnackBar(
-                                          backgroundColor: Colors.green,
-                                          content: Text(
-                                            "Inscription reussi !",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                        ));
-                                        // FirebaseAuth.instance.sendSignInLinkToEmail(email: email, actionCodeSettings: ActionCodeSettings(url: url))
-                                        //                                   var acs = ActionCodeSettings(
-                                        // // URL you want to redirect back to. The domain (www.example.com) for this
-                                        // // URL must be whitelisted in the Firebase Console.
-                                        // url: 'https://www.example.com/finishSignUp?cartId=1234',
-                                        // // This must be true
-                                        // handleCodeInApp: true,
-                                        // iOSBundleId: 'com.example.ios',
-                                        // androidPackageName: 'com.example.android',
-                                        // // installIfNotAvailable
-                                        // androidInstallApp: true,
-                                        // // minimumVersion
-                                        // androidMinimumVersion: '12');
-                                        FirebaseAuth.instance.currentUser!
-                                            .sendEmailVerification(
-                                                ActionCodeSettings(
-                                                    url:
-                                                        "https://www.google.com/"))
-                                            .then((value) {
-                                          Navigator.pushAndRemoveUntil(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (_) =>
-                                                      VerificationMethodScreen()),
-                                              (close) => false);
-                                        });
-
-                                        print("User Added");
-                                      });
-                                    } else {
-                                      setState(() {
-                                        isUpload = false;
-                                      });
-                                      showAlertDialog(
-                                        context: context,
-                                        title: "Attention",
-                                        body:
-                                            "Ce compte existe deja avec cette addresse email,veuillez en creez un autre",
-                                        isError: true,
-                                      );
-                                    }
-                                  });
-                                });
-                              }
+                              var userModel = {
+                                "email": widget.email,
+                                'name': name.trim(),
+                                'password':widget.password,
+                                'date': date.trim(),
+                                'phoneNumber': phoneNumber.trim(),
+                                'location': location.trim(),
+                                'entreprise': nameofentreprise.trim(),
+                                'keyentreprise': keyofentreprise.trim(),
+                                'image': image,
+                               
+                              };
+                              Navigator.push(context, MaterialPageRoute(builder: (_)=>Experience(dataUser: userModel,)));
                             }
                           },
-                          child: const Text("S'inscrire"),
+                          child: const Text("Suivant"),
                         ),
                       ),
                     ],
@@ -1033,7 +873,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
             },
             child: Container(
               height: double.infinity,
-              width:double.infinity,
+              width: double.infinity,
               color: Colors.black.withOpacity(.3),
               child: Padding(
                 padding: EdgeInsets.only(
@@ -1053,7 +893,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                     setState(() {
                       _showpicker = false;
                       date = '';
-                      });
+                    });
                   },
                   cancelText: '',
                   selectionShape: DateRangePickerSelectionShape.circle,
