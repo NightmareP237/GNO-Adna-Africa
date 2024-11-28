@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
 Future<void> testHeath() async{
   HttpsCallable callable = FirebaseFunctions.instance.httpsCallable('checkHeath');
   final response = await callable.call();
-  print('response of cloud functions '+response.data.toString());
+  print('response of cloud functions ${response.data}');
 }
 Future<void> _onBackgroundMessage(RemoteMessage message)async {
    await Firebase.initializeApp(

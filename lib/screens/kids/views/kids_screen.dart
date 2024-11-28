@@ -1,5 +1,5 @@
 // screens/kids/views/kids_screen.dart
-import 'package:adna/components/shopping_bag.dart';import 'package:adna/components/shopping_bag.dart';
+import 'package:adna/components/shopping_bag.dart';
 import 'package:flutter/material.dart';
 import 'package:adna/components/Banner/L/banner_l_style_1.dart';
 import 'package:adna/components/Banner/S/banner_s_style_1.dart';

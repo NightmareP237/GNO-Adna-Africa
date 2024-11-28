@@ -39,28 +39,28 @@ class _HistoriqueScreenState extends State<HistoriqueScreen> {
           .orderBy('timestamp', descending: true)
           .get()
           .then((value) {
-        value.docs.forEach((element) {
+        for (var element in value.docs) {
           print(element.id.toString());
           Map<String, dynamic> allData = element.data();
           print(allData);
           allData.addAll({"docId": element.id.toString()});
           historique.add(allData);
-            print("historique :" +historique.toString());
-        });
+            print("historique :$historique");
+        }
         db
             .collection("posts")
             .where("uid", isEqualTo: user?.uid.toString())
             .orderBy('timestamp', descending: true)
             .get()
             .then((value) {
-          value.docs.forEach((element) {
+          for (var element in value.docs) {
             print(element.id.toString());
             Map<String, dynamic> allData = element.data();
             print(allData);
             allData.addAll({"docId": element.id.toString()});
             posts.add(allData);
-            print("posts :"+posts.toString());
-          });
+            print("posts :$posts");
+          }
           setState(() {
             loading = false;
           });
@@ -140,7 +140,7 @@ class _HistoriqueScreenState extends State<HistoriqueScreen> {
                   )),
                   historique.isEmpty
                       ? SliverToBoxAdapter(
-                          child: Container(
+                          child: SizedBox(
                           height: MediaQuery.of(context).size.height / 1.2,
                           width: double.infinity,
                           child: Column(
@@ -172,7 +172,7 @@ class _HistoriqueScreenState extends State<HistoriqueScreen> {
                           ),
                           sliver: SliverGrid(
                             gridDelegate:
-                                SliverGridDelegateWithMaxCrossAxisExtent(
+                                const SliverGridDelegateWithMaxCrossAxisExtent(
                               maxCrossAxisExtent: 200.0,
                               mainAxisSpacing: defaultPadding,
                               crossAxisSpacing: defaultPadding,
@@ -281,16 +281,13 @@ class _HistoriqueScreenState extends State<HistoriqueScreen> {
                                   price: 100,
                                   docid: historique[index]['docId'].toString(),
                                   image: historique[index]['image'].toString(),
-                                  brandName: historique[index]['location']
+                                  brandName: "${historique[index]['location']
                                           .toString()
-                                          .split(' ')[0] +
-                                      " " +
-                                      historique[index]['secteur'].toString(),
+                                          .split(' ')[0]} ${historique[index]['secteur']}",
                                   title: "Aucun",
-                                  date: "1min , " +
-                                      historique[index]['location']
+                                  date: "1min , ${historique[index]['location']
                                           .toString()
-                                          .split(' ')[1],
+                                          .split(' ')[1]}",
                                   // priceAfetDiscount:
                                   //     demoPopularProducts[index].priceAfetDiscount,
                                   // dicountpercent: demoPopularProducts[index].dicountpercent,

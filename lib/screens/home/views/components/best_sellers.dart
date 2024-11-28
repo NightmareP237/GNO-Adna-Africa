@@ -1,5 +1,5 @@
 // screens/home/views/components/best_sellers.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/components/product/product_card.dart';
 import 'package:adna/models/product_model.dart';
 

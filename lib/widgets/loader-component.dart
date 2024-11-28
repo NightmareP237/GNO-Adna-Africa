@@ -2,6 +2,8 @@
 import 'package:adna/constants.dart';
 import 'package:flutter/material.dart';
 class LoadingComponent extends StatelessWidget {
+  const LoadingComponent({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +23,8 @@ class LoadingComponent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-             Padding(
-               padding: const EdgeInsets.all(8.0),
+             const Padding(
+               padding: EdgeInsets.all(8.0),
                child: CircularProgressIndicator(color: primaryColor,strokeWidth: 2.5,),
              ),
              Text("Chargement...",style: Theme.of(context).textTheme.labelSmall!.copyWith(

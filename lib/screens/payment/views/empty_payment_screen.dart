@@ -1,5 +1,5 @@
 // screens/payment/views/empty_payment_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/constants.dart';
 
 class EmptyPaymentScreen extends StatelessWidget {

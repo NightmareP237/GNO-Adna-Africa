@@ -1,11 +1,9 @@
 // screens/home/views/components/offers_carousel.dart
-import 'dart:async';import 'dart:async';
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:adna/components/Banner/M/banner_m_style_1.dart';
 import 'package:adna/components/Banner/M/banner_m_style_2.dart';
-import 'package:adna/components/Banner/M/banner_m_style_3.dart';
-import 'package:adna/components/Banner/M/banner_m_style_4.dart';
 import 'package:adna/components/dot_indicators.dart';
 
 import '../../../../constants.dart';

@@ -1,5 +1,5 @@
 // screens/notification/view/notification_ontions_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/constants.dart';
 
 import 'components/cupertino_switch_divided_list_tile.dart';

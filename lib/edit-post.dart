@@ -109,7 +109,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
             title: const Text("Modification du poste"),
           ),
           body: Container(
-            padding: EdgeInsets.all(defaultPadding),
+            padding: const EdgeInsets.all(defaultPadding),
             width: double.infinity,
             height: double.infinity,
             child: SingleChildScrollView(
@@ -126,7 +126,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                       "Modifier votre annonce et reposter la !",
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     TextFormField(
@@ -186,21 +186,21 @@ class _EditPostScreenState extends State<EditPostScreen> {
                         // ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Text(
                       "Quel est votre secteur d'activite ?",
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Container(
                       // margin: EdgeInsets.symmetric(
                       //     vertical: MediaQuery.of(context).size.width * .02,
                       //     horizontal: 16),
-                      child: Container(
+                      child: SizedBox(
                         height: MediaQuery.of(context).size.width * .12,
                         width: double.infinity,
                         child: Container(
@@ -312,21 +312,21 @@ class _EditPostScreenState extends State<EditPostScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Text(
                       "D'ou publiez vous cette annance ?",
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Container(
                       // margin: EdgeInsets.symmetric(
                       //     vertical: MediaQuery.of(context).size.width * .02,
                       //     horizontal: 16),
-                      child: Container(
+                      child: SizedBox(
                         height: MediaQuery.of(context).size.width * .12,
                         width: double.infinity,
                         child: Container(
@@ -440,14 +440,14 @@ class _EditPostScreenState extends State<EditPostScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Text(
                       "Modifier l' image de presentation",
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     GestureDetector(
@@ -458,15 +458,15 @@ class _EditPostScreenState extends State<EditPostScreen> {
                               return AlertDialog(
                                 backgroundColor:
                                     Theme.of(context).scaffoldBackgroundColor,
-                                shape: RoundedRectangleBorder(
+                                shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(
                                         Radius.circular(16.0))),
-                                contentPadding: EdgeInsets.all(10),
+                                contentPadding: const EdgeInsets.all(10),
                                 content: SingleChildScrollView(
                                   child: Column(
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.only(
+                                        padding: const EdgeInsets.only(
                                             top: 24,
                                             left: 24,
                                             right: 24,
@@ -490,7 +490,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                             decoration: BoxDecoration(
                                               color: Theme.of(context)
                                                   .scaffoldBackgroundColor,
-                                              borderRadius: BorderRadius.all(
+                                              borderRadius: const BorderRadius.all(
                                                   Radius.circular(8.0)),
                                               boxShadow: [
                                                 BoxShadow(
@@ -500,12 +500,12 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                                       .color!
                                                       .withOpacity(.4),
                                                   blurRadius: 4,
-                                                  offset: Offset(0, 2),
+                                                  offset: const Offset(0, 2),
                                                 ),
                                               ],
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsets.all(8.0),
+                                              padding: const EdgeInsets.all(8.0),
                                               child: Row(
                                                 children: [
                                                   Container(
@@ -514,7 +514,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                                     decoration: BoxDecoration(
                                                       color: primaryColor,
                                                       borderRadius:
-                                                          BorderRadius.all(
+                                                          const BorderRadius.all(
                                                               Radius.circular(
                                                                   50.0)),
                                                       boxShadow: [
@@ -526,13 +526,13 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                                               .color!
                                                               .withOpacity(.4),
                                                           blurRadius: 4,
-                                                          offset: Offset(0, 4),
+                                                          offset: const Offset(0, 4),
                                                         ),
                                                       ],
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsets.all(7.0),
+                                                          const EdgeInsets.all(7.0),
                                                       child: SvgPicture.asset(
                                                         "assets/icons/camera.svg",
                                                         width: 16.0,
@@ -542,7 +542,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: EdgeInsets.only(
+                                                    padding: const EdgeInsets.only(
                                                         left: 16.0,
                                                         right: 50.0),
                                                     child: Column(
@@ -576,7 +576,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                               ),
                                             )),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 16,
                                       ),
                                       GestureDetector(
@@ -589,7 +589,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                             decoration: BoxDecoration(
                                               color: Theme.of(context)
                                                   .scaffoldBackgroundColor,
-                                              borderRadius: BorderRadius.all(
+                                              borderRadius: const BorderRadius.all(
                                                   Radius.circular(8.0)),
                                               boxShadow: [
                                                 BoxShadow(
@@ -599,12 +599,12 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                                       .color!
                                                       .withOpacity(.4),
                                                   blurRadius: 4,
-                                                  offset: Offset(0, 2),
+                                                  offset: const Offset(0, 2),
                                                 ),
                                               ],
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsets.all(8.0),
+                                              padding: const EdgeInsets.all(8.0),
                                               child: Row(
                                                 children: [
                                                   Container(
@@ -613,7 +613,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                                     decoration: BoxDecoration(
                                                       color: primaryColor,
                                                       borderRadius:
-                                                          BorderRadius.all(
+                                                          const BorderRadius.all(
                                                               Radius.circular(
                                                                   50.0)),
                                                       boxShadow: [
@@ -625,13 +625,13 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                                               .color!
                                                               .withOpacity(.4),
                                                           blurRadius: 4,
-                                                          offset: Offset(0, 4),
+                                                          offset: const Offset(0, 4),
                                                         ),
                                                       ],
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsets.all(7.0),
+                                                          const EdgeInsets.all(7.0),
                                                       child: SvgPicture.asset(
                                                         "assets/icons/gallery.svg",
                                                         width: 16.0,
@@ -641,7 +641,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: EdgeInsets.only(
+                                                    padding: const EdgeInsets.only(
                                                         left: 16.0,
                                                         right: 50.0),
                                                     child: Column(
@@ -675,7 +675,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                               ),
                                             )),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 16,
                                       )
                                     ],
@@ -707,7 +707,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                           ),
                         ),
                         child: image != null
-                            ? SizedBox()
+                            ? const SizedBox()
                             : Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -721,7 +721,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                                         .color!
                                         .withOpacity(0.25),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: defaultPadding / 2,
                                   ),
                                   Text(
@@ -818,8 +818,8 @@ class _EditPostScreenState extends State<EditPostScreen> {
                       ));
                     }
                   },
-                  child: Text('Publier', style: TextStyle(color: Colors.white)),
                   backgroundColor: primaryColor,
+                  child: Text('Publier', style: TextStyle(color: Colors.white)),
                 ),
         ),
         if (loading) LoadingComponent()

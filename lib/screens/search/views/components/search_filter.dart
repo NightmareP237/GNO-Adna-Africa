@@ -1,5 +1,5 @@
 // screens/search/views/components/search_filter.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/components/custom_modal_bottom_sheet.dart';
 import 'package:adna/components/list_tile/divider_list_tile.dart';
 import 'package:adna/components/outlined_active_button.dart';

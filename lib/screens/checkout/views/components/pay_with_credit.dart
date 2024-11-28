@@ -1,5 +1,5 @@
 // screens/checkout/views/components/pay_with_credit.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
 import 'use_available_credit.dart';

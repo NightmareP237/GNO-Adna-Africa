@@ -1,5 +1,5 @@
 // components/Banner/S/banner_s_style_3.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/components/Banner/S/banner_s.dart';
 import 'package:adna/constants.dart';
 

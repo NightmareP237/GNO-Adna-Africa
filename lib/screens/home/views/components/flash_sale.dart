@@ -1,5 +1,5 @@
 // screens/home/views/components/flash_sale.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/route/route_constants.dart';
 
 import '/components/Banner/M/banner_m_with_counter.dart';

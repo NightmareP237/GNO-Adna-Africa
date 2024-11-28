@@ -1,4 +1,5 @@
 // screens/auth/views/signup_screen.dart
+import 'package:adna/screens/auth/views/login_screen.dart';
 import 'package:adna/screens/auth/views/profile_setup_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/gestures.dart';
@@ -213,18 +214,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     },
                     child: const Text("Suivant"),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Avez-vous deja un compte?"),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, logInScreenRoute);
-                        },
-                        child: const Text("Connectez-vous"),
-                      )
-                    ],
-                  ),
+                                    sizedBox20,
+                  const SocialButton(social: "google", fcmToken: ""),
+                  sizedBox10,
+                  const SocialButton(social: "facebook", fcmToken: ""),
+                  sizedBox5,
                 ],
               ),
             )

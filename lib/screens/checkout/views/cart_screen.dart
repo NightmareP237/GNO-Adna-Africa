@@ -44,8 +44,8 @@ class _CartScreenState extends State<CartScreen> {
       Container(
       width: double.infinity,
       height: MediaQuery.of(context).size.height / 3.2,
-      padding: EdgeInsets.only(top: 8, left: 16, right: 16),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.only(top: 8, left: 16, right: 16),
+      decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
@@ -70,7 +70,7 @@ class _CartScreenState extends State<CartScreen> {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             ButtonCard1(
@@ -80,7 +80,7 @@ class _CartScreenState extends State<CartScreen> {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, signUpScreenRoute);
                 }),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             ButtonCard(

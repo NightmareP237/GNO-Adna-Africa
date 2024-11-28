@@ -1,5 +1,5 @@
 // screens/error/views/no_internet_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/constants.dart';
 
 class NoInternetScreen extends StatelessWidget {

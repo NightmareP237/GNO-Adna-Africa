@@ -1,5 +1,5 @@
 // screens/search/views/search_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:adna/components/custom_modal_bottom_sheet.dart';
 import 'package:adna/constants.dart';

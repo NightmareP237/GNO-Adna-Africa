@@ -1,5 +1,6 @@
 // route/screen_export.dart
-export '/screens/permissions/views/notification_permission_screen.dart';export '/screens/permissions/views/notification_permission_screen.dart';
+export '/screens/permissions/views/notification_permission_screen.dart';
+export '/screens/permissions/views/notification_permission_screen.dart';
 export '/screens/onbording/views/onbording_screnn.dart';
 export '/screens/auth/views/otp_screen.dart';
 export '/screens/auth/views/verification_method_screen.dart';
@@ -7,7 +8,7 @@ export '/screens/auth/views/login_screen.dart';
 export '/screens/auth/views/password_recovery_screen.dart';
 export '/screens/auth/views/profile_setup_screen.dart';
 export '/screens/auth/views/signup_screen.dart';
-export '../screens/language/view/preferred_language_screen.dart';
+// export '/screens/language/view/preferred_language_screen.dart';
 export '/route/route_constants.dart';
 export '/screens/auth/views/done_reset_password_screen.dart';
 export '/screens/auth/views/set_new_password_screen.dart';

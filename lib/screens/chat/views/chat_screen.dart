@@ -57,7 +57,7 @@ class _ChatScreenState extends State<ChatScreen> {
             );
           }
           return snapshot.data!.docs.isEmpty
-              ? Container(
+              ? SizedBox(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height,
                   child: Column(
@@ -85,14 +85,14 @@ class _ChatScreenState extends State<ChatScreen> {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
                           Text(
                             "Aucun message pour l'instand...",
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
                           Text("Envoyer un message et commencer a discuter !",
@@ -201,7 +201,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           });
                         },
                         child: Container(
-                          margin: EdgeInsets.all(16),
+                          margin: const EdgeInsets.all(16),
                           width: double.infinity,
                           height: 40,
                           decoration: BoxDecoration(
@@ -216,8 +216,8 @@ class _ChatScreenState extends State<ChatScreen> {
                                   .withOpacity(0.15),
                             ),
                           ),
-                          child: Center(
-                            child: const Text("Envoyer un message",
+                          child: const Center(
+                            child: Text("Envoyer un message",
                                 style: TextStyle(color: Colors.white)),
                           ),
                         ),
@@ -257,7 +257,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
                     snapshot.data!.docs.length <= 1
                         ? Expanded(
-                            child: Container(
+                            child: SizedBox(
                               width: double.infinity,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -265,12 +265,12 @@ class _ChatScreenState extends State<ChatScreen> {
                                 children: [
                                   Column(
                                     children: [
-                                      Icon(
+                                      const Icon(
                                         Icons.message,
                                         size: 50,
                                         color: Colors.grey,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 8,
                                       ),
                                       Text(
@@ -279,7 +279,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                             .textTheme
                                             .bodySmall,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 4,
                                       ),
                                       Text(
@@ -330,17 +330,15 @@ class _ChatScreenState extends State<ChatScreen> {
                                   listData.remove(listData[0]);
                                   return TextMessage(
                                     message: listData[index].get('message'),
-                                    time: DateTime.fromMillisecondsSinceEpoch(
+                                    time: "${DateTime.fromMillisecondsSinceEpoch(
                                                 listData[index].get('time'))
                                             .toString()
                                             .split(" ")[1]
-                                            .split(":")[0] +
-                                        ":" +
-                                        DateTime.fromMillisecondsSinceEpoch(
+                                            .split(":")[0]}:${DateTime.fromMillisecondsSinceEpoch(
                                                 listData[index].get('time'))
                                             .toString()
                                             .split(" ")[1]
-                                            .split(":")[1],
+                                            .split(":")[1]}",
                                     isSender: listData[index]
                                             .get('sender')
                                             .toString()
@@ -402,7 +400,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             onTap: () {
                               _scrollController.animateTo(
                                   curve: Curves.easeIn,
-                                  duration: Duration(microseconds: 700),
+                                  duration: const Duration(microseconds: 700),
                                   _scrollController.position.maxScrollExtent);
                             },
                             controller: editcontroller,

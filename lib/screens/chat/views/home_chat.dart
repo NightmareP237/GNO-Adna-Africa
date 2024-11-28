@@ -55,7 +55,7 @@ class _HomeChatState extends State<HomeChat> {
       });
       final db = FirebaseFirestore.instance;
       db.collection("users").get().then((value) {
-        value.docs.forEach((element) {
+        for (var element in value.docs) {
           print(element.data());
           print(element.id);
         var value =  UserInfoView.fromDocumentSnapshot(element, element.id);
@@ -67,7 +67,7 @@ class _HomeChatState extends State<HomeChat> {
           setState(() {
             loading = false;
           });
-        });
+        }
       });
     } catch (e) {
       print(e);
@@ -85,8 +85,8 @@ class _HomeChatState extends State<HomeChat> {
               ? Container(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height / 3.2,
-                  padding: EdgeInsets.only(top: 8, left: 16, right: 16),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.only(top: 8, left: 16, right: 16),
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
@@ -115,7 +115,7 @@ class _HomeChatState extends State<HomeChat> {
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 16,
                         ),
                         ButtonCard1(
@@ -125,7 +125,7 @@ class _HomeChatState extends State<HomeChat> {
                               Navigator.pop(context);
                               Navigator.pushNamed(context, signUpScreenRoute);
                             }),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         ButtonCard(
@@ -191,7 +191,7 @@ class _HomeChatState extends State<HomeChat> {
                                   (users[index].image.isEmpty ||
                                           users[index].uid.contains(FirebaseAuth
                                               .instance.currentUser!.uid))
-                                      ? SizedBox()
+                                      ? const SizedBox()
                                       : InkWell(
                                           onTap: () {
                                             Navigator.push(
@@ -224,7 +224,7 @@ class _HomeChatState extends State<HomeChat> {
                                                   ),
                                                 ),
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 4,
                                               ),
                                               Text(
@@ -238,7 +238,7 @@ class _HomeChatState extends State<HomeChat> {
                                         ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: defaultPadding,
                           ),
                           Expanded(
@@ -253,10 +253,10 @@ class _HomeChatState extends State<HomeChat> {
                                   const SizedBox(
                                     height: defaultPadding / 2,
                                   ),
-                                  Padding(
+                                  const Padding(
                                     padding:
-                                        const EdgeInsets.symmetric(vertical: 4),
-                                    child: const SupportPersonInfo(
+                                        EdgeInsets.symmetric(vertical: 4),
+                                    child: SupportPersonInfo(
                                       image: "https://i.imgur.com/IXnwbLk.png",
                                       name: "Support Adna",
                                       isConnected: true,
@@ -265,7 +265,7 @@ class _HomeChatState extends State<HomeChat> {
                                     ),
                                   ),
                                   snapshot.data!.docs.isEmpty
-                                      ? Container(
+                                      ? SizedBox(
                                           width: double.infinity,
                                           height: MediaQuery.of(context)
                                                   .size
@@ -337,11 +337,11 @@ class _HomeChatState extends State<HomeChat> {
                       FirebaseAuth.instance.currentUser!.displayName!.isEmpty)
                   ? null
                   : FloatingActionButton.extended(
-                      label: Text("Nouveau message"),
-                      icon: Icon(Icons.contacts_rounded),
+                      label: const Text("Nouveau message"),
+                      icon: const Icon(Icons.contacts_rounded),
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => NewChat()));
+                            MaterialPageRoute(builder: (_) => const NewChat()));
                       }),
         ),
         if (loading) LoadingComponent()

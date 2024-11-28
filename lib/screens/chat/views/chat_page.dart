@@ -1,20 +1,19 @@
 // screens/chat/views/chat_page.dart
 import 'package:adna/components/chat_active_dot.dart';
 import 'package:adna/components/network_image_with_loader.dart';
+import 'package:adna/database/Firebase.dart';
 import 'package:adna/models/user_model.dart';
 import 'package:adna/widgets/loader-component.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:adna/constants.dart';
 import 'package:adna/theme/input_decoration_theme.dart';
-import 'components/support_person_info.dart';
 import 'components/text_message.dart';
 
 class ChatPage extends StatefulWidget {
-  ChatPage(
+  const ChatPage(
       {super.key,
       required this.user});
   final UserInfoView user;
@@ -68,7 +67,7 @@ class _ChatPageState extends State<ChatPage> {
             );
           }
           return snapshot.data!.docs.isEmpty
-              ? Container(
+              ? SizedBox(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height,
                   child: Column(
@@ -96,14 +95,14 @@ class _ChatPageState extends State<ChatPage> {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
                           Text(
                             "Aucun message pour l'instand...",
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
                           Text("Envoyer un message et commencer a discuter !",
@@ -212,7 +211,7 @@ class _ChatPageState extends State<ChatPage> {
                           });
                         },
                         child: Container(
-                          margin: EdgeInsets.all(16),
+                          margin: const EdgeInsets.all(16),
                           width: double.infinity,
                           height: 40,
                           decoration: BoxDecoration(
@@ -227,8 +226,8 @@ class _ChatPageState extends State<ChatPage> {
                                   .withOpacity(0.15),
                             ),
                           ),
-                          child: Center(
-                            child: const Text("Envoyer un message",
+                          child: const Center(
+                            child: Text("Envoyer un message",
                                 style: TextStyle(color: Colors.white)),
                           ),
                         ),
@@ -268,7 +267,7 @@ class _ChatPageState extends State<ChatPage> {
 
                     snapshot.data!.docs.length <= 1
                         ? Expanded(
-                            child: Container(
+                            child: SizedBox(
                               width: double.infinity,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -276,12 +275,12 @@ class _ChatPageState extends State<ChatPage> {
                                 children: [
                                   Column(
                                     children: [
-                                      Icon(
+                                      const Icon(
                                         Icons.message,
                                         size: 50,
                                         color: Colors.grey,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 8,
                                       ),
                                       Text(
@@ -290,7 +289,7 @@ class _ChatPageState extends State<ChatPage> {
                                             .textTheme
                                             .bodySmall,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 4,
                                       ),
                                       Text(
@@ -341,17 +340,15 @@ class _ChatPageState extends State<ChatPage> {
                                       : null;
                                   return TextMessage(
                                     message: listData[index].get('message'),
-                                    time: DateTime.fromMillisecondsSinceEpoch(
+                                    time: "${DateTime.fromMillisecondsSinceEpoch(
                                                 listData[index].get('time'))
                                             .toString()
                                             .split(" ")[1]
-                                            .split(":")[0] +
-                                        ":" +
-                                        DateTime.fromMillisecondsSinceEpoch(
+                                            .split(":")[0]}:${DateTime.fromMillisecondsSinceEpoch(
                                                 listData[index].get('time'))
                                             .toString()
                                             .split(" ")[1]
-                                            .split(":")[1],
+                                            .split(":")[1]}",
                                     isSender: listData[index]
                                             .get('sender')
                                             .toString()
@@ -413,7 +410,7 @@ class _ChatPageState extends State<ChatPage> {
                               onTap: () {
                         _scrollController.animateTo(
                             curve: Curves.easeIn,
-                            duration: Duration(microseconds: 700),
+                            duration: const Duration(microseconds: 700),
                             _scrollController.position.maxScrollExtent);
                       },
                             controller: editcontroller,
@@ -549,25 +546,4 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  static Future<bool> SendNotification(
-      String title, body, token, String image) async {
-    try {
-      HttpsCallable callable =
-          FirebaseFunctions.instance.httpsCallable('sendNotification');
-
-      final response = await callable.call(<String, dynamic>{
-        'title': title,
-        'body': body,
-        'token': token,
-        'image': image,
-      });
-      print('result is ${response.data ?? 'No data came back'}');
-
-      if (response.data == null) return false;
-      return true;
-    } catch (e) {
-      print("this is the error $e");
-      return false;
-    }
-  }
 }

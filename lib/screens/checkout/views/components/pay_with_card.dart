@@ -1,5 +1,5 @@
 // screens/checkout/views/components/pay_with_card.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:adna/components/card_info.dart';
 import 'package:adna/route/screen_export.dart';

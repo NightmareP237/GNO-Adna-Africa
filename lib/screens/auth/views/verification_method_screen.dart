@@ -55,9 +55,8 @@ class _VerificationMethodScreenState extends State<VerificationMethodScreen> {
                 // ),
                 const SizedBox(height: defaultPadding),
                 VerificationMethodCard(
-                  text: FirebaseAuth.instance.currentUser!.email!
-                          .substring(0, 7) +
-                      "*******@gmail.com",
+                  text: "${FirebaseAuth.instance.currentUser!.email!
+                          .substring(0, 7)}*******@gmail.com",
                   svgSrc: "assets/icons/Message.svg",
                   isActive: true,
                   press: () {},
@@ -71,11 +70,11 @@ class _VerificationMethodScreenState extends State<VerificationMethodScreen> {
                       loading = true;
                     });
                     FirebaseAuth.instance.currentUser!.reload();
-                    Timer(Duration(seconds: 4), () {
+                    Timer(const Duration(seconds: 4), () {
                       if (FirebaseAuth.instance.currentUser!.emailVerified) {
                         Navigator.pushAndRemoveUntil(
                             context,
-                            MaterialPageRoute(builder: (_) => EntryPoint()),
+                            MaterialPageRoute(builder: (_) => const EntryPoint()),
                             (close) => false);
                       } else {
                         setState(() {
@@ -83,7 +82,7 @@ class _VerificationMethodScreenState extends State<VerificationMethodScreen> {
                         });
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           backgroundColor: Theme.of(context).canvasColor,
-                          content: Text(
+                          content: const Text(
                             "Email non verifie !",
                             style: TextStyle(color: Colors.red),
                           ),

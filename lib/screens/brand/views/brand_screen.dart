@@ -1,5 +1,5 @@
 // screens/brand/views/brand_screen.dart
-import 'package:adna/components/shopping_bag.dart';import 'package:adna/components/shopping_bag.dart';
+import 'package:adna/components/shopping_bag.dart';
 import 'package:flutter/material.dart';
 import 'package:adna/components/product/product_card.dart';
 import 'package:adna/constants.dart';

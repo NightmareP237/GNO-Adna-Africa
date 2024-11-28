@@ -1,3 +1,4 @@
+// screens/product/views/components/product_images.dart
 import 'package:flutter/material.dart';
 import '/components/network_image_with_loader.dart';
 
@@ -9,7 +10,7 @@ class ProductImages extends StatefulWidget {
     required this.images,
   });
 
-  final List<String> images;
+  final List images;
 
   @override
   State<ProductImages> createState() => _ProductImagesState();
@@ -35,7 +36,8 @@ class _ProductImagesState extends State<ProductImages> {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
+    return Padding(
+      padding: const EdgeInsets.only(top: defaultPadding*2,bottom: defaultPadding),
       child: AspectRatio(
         aspectRatio: 1,
         child: Stack(

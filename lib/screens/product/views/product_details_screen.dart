@@ -1,5 +1,6 @@
 // screens/product/views/product_details_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+// screens/product/views/product_details_screen.dart
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:adna/components/cart_button.dart';
 import 'package:adna/components/custom_modal_bottom_sheet.dart';
@@ -64,8 +65,7 @@ class ProductDetailsScreen extends StatelessWidget {
               brand: "LIPSY LONDON",
               title: "Sleeveless Ruffle",
               isAvailable: isProductAvailable,
-              description:
-                  "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
+              description:"A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
               rating: 4.4,
               numOfReviews: 126,
             ),

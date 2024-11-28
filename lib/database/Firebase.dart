@@ -1,15 +1,16 @@
+// database/Firebase.dart
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image_picker/image_picker.dart';
-
 
 class Firebase {
   static FirebaseFirestore db = FirebaseFirestore.instance;
@@ -80,7 +81,7 @@ class Firebase {
   }
 
   static Future<void> updateDocumentStatus(
-      String id, Map<String,dynamic> data) async {
+      String id, Map<String, dynamic> data) async {
     return db
         .collection('documents')
         .doc(id)
@@ -126,7 +127,7 @@ class Firebase {
     if (image != null) {
       //Upload to Firebase
       var snapshot = await storage
-          .ref('documents/' + image.name)
+          .ref('documents/${image.name}')
           .putFile(File(image.path));
       var downloadUrl = await snapshot.ref.getDownloadURL();
       return downloadUrl;
@@ -144,7 +145,7 @@ class Firebase {
     if (image != null) {
       //Upload to Firebase
       var snapshot =
-          await storage.ref('chats/' + image.name).putFile(File(image.path));
+          await storage.ref('chats/${image.name}').putFile(File(image.path));
       var downloadUrl = await snapshot.ref.getDownloadURL();
       return downloadUrl;
     } else {
@@ -155,13 +156,14 @@ class Firebase {
     return '';
   }
 
+  
   static Future<String> uploadImageProfile(
       XFile image, BuildContext context) async {
     var storage = FirebaseStorage.instance;
     if (image != null) {
       //Upload to Firebase
       var snapshot =
-          await storage.ref('profiles/' + image.name).putFile(File(image.path));
+          await storage.ref('profiles/${image.name}').putFile(File(image.path));
       var downloadUrl = await snapshot.ref.getDownloadURL();
       if (kDebugMode) {
         print(downloadUrl);
@@ -181,7 +183,7 @@ class Firebase {
     if (image != null) {
       //Upload to Firebase
       var snapshot = await storage
-          .ref('collectors/' + image.name)
+          .ref('collectors/${image.name}')
           .putFile(File(image.path));
       var downloadUrl = await snapshot.ref.getDownloadURL();
       return downloadUrl;
@@ -191,5 +193,26 @@ class Firebase {
       }
     }
     return '';
+  }
+}
+
+Future<bool> SendNotification(String title, body, token, String image) async {
+  try {
+    HttpsCallable callable =
+        FirebaseFunctions.instance.httpsCallable('sendNotification');
+
+    final response = await callable.call(<String, dynamic>{
+      'title': title,
+      'body': body,
+      'token': token,
+      'image': image,
+    });
+    print('result is ${response.data ?? 'No data came back'}');
+
+    if (response.data == null) return false;
+    return true;
+  } catch (e) {
+    print("this is the error $e");
+    return false;
   }
 }

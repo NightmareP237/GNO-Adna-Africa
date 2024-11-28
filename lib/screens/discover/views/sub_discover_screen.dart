@@ -1,5 +1,5 @@
 // screens/discover/views/sub_discover_screen.dart
-import 'package:adna/components/shopping_bag.dart';import 'package:adna/components/shopping_bag.dart';
+import 'package:adna/components/shopping_bag.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:adna/constants.dart';

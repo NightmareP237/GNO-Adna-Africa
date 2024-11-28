@@ -29,7 +29,7 @@ class SupportPersonInfo extends StatelessWidget {
         title: Row(
           
           children: [
-            Text("$name"),
+            Text(name),
             if (isConnected && !isTyping) const Text(" is connected",style: TextStyle(color: successColor),),
             if (isConnected && isTyping) const Text("typing..."),
           ],

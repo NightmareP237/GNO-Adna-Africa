@@ -1,5 +1,5 @@
 // screens/search/views/components/search_form.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:adna/theme/input_decoration_theme.dart';

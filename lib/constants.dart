@@ -1,6 +1,7 @@
 // constants.dart
 import 'package:adna/components/product/product_card.dart';
 import 'package:adna/route/route_constants.dart';
+import 'package:adna/screens/auth/views/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
@@ -18,13 +19,15 @@ const grandisExtendedFont = "Grandis Extended";
 
 // On color 80, 60.... those means opacity
 
-const Color primaryColor = Color.fromARGB(255, 75, 178, 79);
+const Color primaryColor = Color(0xff04A502);
 const SizedBox sizedBox10 = SizedBox(height: 10,);
 const SizedBox sizedBox5 = SizedBox(height: 5,);
 const SizedBox sizedBox15 = SizedBox(height: 15,);
 const SizedBox sizedBox20 = SizedBox(height: 20,);
 const SizedBox sizedBox40 = SizedBox(height: 40,);
-const SizedBox sizedBoxWidth20 = SizedBox(width: 20,);
+ SizedBox sizedBoxWidth20 = const SizedBox(width: 20,);
+ const SizedBox sizedBoxWidth10 = SizedBox(width: 10,);
+const SizedBox sizedBoxWidth30 = SizedBox(width: 30,);
 
 const Color gPrimaryColor = Color(0xff294D9C);
 const Color gSecondaryColor = Color(0xFF77246C);
@@ -95,15 +98,21 @@ const Duration defaultDuration = Duration(milliseconds: 300);
     "Alimentaire",
   ];
 final passwordValidator = MultiValidator([
-  RequiredValidator(errorText: 'Password is required'),
-  MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),
+  RequiredValidator(errorText: "Mot de passe requis"
+  // 'Password is required'
+  ),
+  MinLengthValidator(8, errorText: 'Le mot de passe doit avoir plus de 8 caractere'
+  // 'password must be at least 8 digits long'
+  ),
   PatternValidator(r'(?=.*?[#?!@$%^&*-])',
-      errorText: 'passwords must have at least one special character')
+      errorText: 'Le mot de passe doit contenir un caractere special'
+      // 'passwords must have at least one special character'
+      )
 ]);
 
 final emaildValidator = MultiValidator([
-  RequiredValidator(errorText: 'Email is required'),
-  EmailValidator(errorText: "Enter a valid email address"),
+  RequiredValidator(errorText: 'Email requis'),
+  EmailValidator(errorText: "Entrer une addresse email valide"),
 ]);
 
 const pasNotMatchErrorText = "passwords do not match";
@@ -170,7 +179,7 @@ Future<void> showAlertDialog2(
                               style: buttonStyle(primaryColor),
                             ),
                           )),
-                      Container(height: 50, width: 1, color: Color(0xFFE1E1E1)),
+                      Container(height: 50, width: 1, color: const Color(0xFFE1E1E1)),
                       TextButton(
                           onPressed: methodYes,
                           child: Center(
@@ -250,7 +259,7 @@ Future<void> showAlertDialog3(
                               style: buttonStyle(errorColor),
                             ),
                           )),
-                      Container(height: 2, width: double.infinity, color: Color(0xFFE1E1E1)),
+                      Container(height: 2, width: double.infinity, color: const Color(0xFFE1E1E1)),
                       TextButton(
                           onPressed: methodYes,
                           child: Center(
@@ -259,7 +268,7 @@ Future<void> showAlertDialog3(
                               style: buttonStyle(errorColor),
                             ),
                           )),
-                           Container(height: 2, width: double.infinity, color: Color(0xFFE1E1E1)),
+                           Container(height: 2, width: double.infinity, color: const Color(0xFFE1E1E1)),
                       TextButton(
                           onPressed: () {
                             Navigator.of(context).pop();
@@ -284,23 +293,25 @@ Future<void> showAlertDialog(
     {required BuildContext context,
     required String title,
     required String body,
+    String button='',
     bool? isError,
     VoidCallback? method}) {
   // ignore: missing_return
   return showDialog(
-      barrierDismissible: true,
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          shape: RoundedRectangleBorder(
+
+          shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(16.0))),
-          contentPadding: EdgeInsets.all(0),
+          contentPadding: const EdgeInsets.all(0),
           content: SingleChildScrollView(
             child: Column(
               children: [
                 Container(
                   padding:
-                      EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 8),
+                      const EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 8),
                   child: Text(
                     title,
                     textAlign: TextAlign.center,
@@ -309,11 +320,11 @@ Future<void> showAlertDialog(
                         :  Theme.of(context).textTheme.bodyMedium!.color!),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20),
+                  padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Text(
                     body,
                     // maxLines: 2,
@@ -326,7 +337,7 @@ Future<void> showAlertDialog(
                         inherit: false),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 28,
                 ),
                 Divider(
@@ -337,10 +348,17 @@ Future<void> showAlertDialog(
                   child: TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
+                        Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => 
+                                        const LoginScreen()
+                                        ),
+                                    );
                         method;
                       },
                       child: Text(
-                        "OK",
+                        button.isEmpty?"Ok":button,
                         style: buttonStyle(primaryColor),
                       )),
                 ),
@@ -357,8 +375,8 @@ Future NoAccount(BuildContext context) {
     builder: (context) => Container(
       width: double.infinity,
       height: MediaQuery.of(context).size.height / 3.2,
-      padding: EdgeInsets.only(top: 8, left: 16, right: 16),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.only(top: 8, left: 16, right: 16),
+      decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
@@ -388,7 +406,7 @@ Future NoAccount(BuildContext context) {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             ButtonCard1(
@@ -398,7 +416,7 @@ Future NoAccount(BuildContext context) {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, signUpScreenRoute);
                 }),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             ButtonCard(

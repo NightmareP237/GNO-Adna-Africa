@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
 class ProfileBaseScreen extends StatefulWidget {
-  ProfileBaseScreen({required this.userInfo, required this.postUserPro});
+  const ProfileBaseScreen({super.key, required this.userInfo, required this.postUserPro});
   final UserInfoView userInfo;
   final List postUserPro;
   @override
@@ -38,7 +38,7 @@ class _ProfileBaseScreenState extends State<ProfileBaseScreen> {
     print(widget.postUserPro.length);
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40),
+        preferredSize: const Size.fromHeight(40),
         child: Container(
           decoration: BoxDecoration(
             border: Border(
@@ -52,20 +52,20 @@ class _ProfileBaseScreenState extends State<ProfileBaseScreen> {
             title: Text(
               widget.userInfo.name,
               style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
+                  const TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
             ),
             centerTitle: false,
             elevation: 0,
             actions: [
               IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.add_box_outlined,
                   color: Colors.black,
                 ),
                 onPressed: () => print("Add"),
               ),
               IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.menu,
                   color: Colors.black,
                 ),
@@ -109,7 +109,7 @@ class _ProfileBaseScreenState extends State<ProfileBaseScreen> {
                   unselectedLabelColor: Colors.grey[400],
                   indicatorWeight: 1,
                   indicatorColor: Colors.black,
-                  tabs: [
+                  tabs: const [
                     Tab(
                       icon: Icon(
                         Icons.grid_on_sharp,
@@ -135,14 +135,14 @@ class _ProfileBaseScreenState extends State<ProfileBaseScreen> {
                     ),
                     Scaffold(
                       body: Container(
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
                         child: Column(
                           children: [
                             ButtonCard1(label: "Me contacter", isOutline: true,
                              onTap: (){
                             //  launchWhatsApp(phone: widget.postUserPro, message: message)
                             }),
-                            SizedBox(height: 16,),
+                            const SizedBox(height: 16,),
                             ButtonCard1(label: "Ne plus suivre", isOutline: false,
                              onTap: (){
                               //  launchWhatsApp(phone: widget.postUserPro, message: message)

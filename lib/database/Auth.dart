@@ -1,6 +1,5 @@
 // database/Auth.dart
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthServices {
   static FirebaseAuth auth = FirebaseAuth.instance;

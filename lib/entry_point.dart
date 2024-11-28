@@ -133,7 +133,7 @@ class _EntryPointState extends State<EntryPoint> {
                   color: Theme.of(context).brightness == Brightness.light
                       ? Colors.black
                       : Colors.white),
-              activeIcon: Icon(Icons.home, color: primaryColor),
+              activeIcon: const Icon(Icons.home, color: primaryColor),
               label: "Accueil",
             ),
             BottomNavigationBarItem(
@@ -141,7 +141,7 @@ class _EntryPointState extends State<EntryPoint> {
                   color: Theme.of(context).brightness == Brightness.light
                       ? Colors.black
                       : Colors.white),
-              activeIcon: Icon(Icons.store, color: primaryColor),
+              activeIcon: const Icon(Icons.store, color: primaryColor),
               label: "Market Place",
             ),
             BottomNavigationBarItem(
@@ -149,7 +149,7 @@ class _EntryPointState extends State<EntryPoint> {
                   color: Theme.of(context).brightness == Brightness.light
                       ? Colors.black
                       : Colors.white),
-              activeIcon: Icon(Icons.add_box_outlined, color: primaryColor),
+              activeIcon: const Icon(Icons.add_box_outlined, color: primaryColor),
               label: "Publication",
             ),
             BottomNavigationBarItem(
@@ -157,7 +157,7 @@ class _EntryPointState extends State<EntryPoint> {
                   color: Theme.of(context).brightness == Brightness.light
                       ? Colors.black
                       : Colors.white),
-              activeIcon: Icon(Icons.message_rounded, color: primaryColor),
+              activeIcon: const Icon(Icons.message_rounded, color: primaryColor),
               label: "Message",
             ),
             BottomNavigationBarItem(

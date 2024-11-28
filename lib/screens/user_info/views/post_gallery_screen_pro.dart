@@ -8,8 +8,8 @@ import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 
 class Gallery extends StatefulWidget {
-  Gallery(
-      {required this.postUser, required this.Username, required this.photoUrl});
+  const Gallery(
+      {super.key, required this.postUser, required this.Username, required this.photoUrl});
   final List postUser;
   final String Username, photoUrl;
   @override
@@ -30,7 +30,7 @@ class _GalleryState extends State<Gallery> {
 
   @override
   Widget _createActionBar(BuildContext context, int index) => Container(
-        padding: EdgeInsets.symmetric(vertical: 10.0),
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
         color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -47,7 +47,7 @@ class _GalleryState extends State<Gallery> {
                               ),
                             ));
               },
-              child: Icon(
+              child: const Icon(
                 Icons.favorite_border,
                 color: Colors.black,
               ),
@@ -61,8 +61,7 @@ class _GalleryState extends State<Gallery> {
               ),
               child: Center(
                 child: Text(
-                  widget.postUser[index]['location'].toString().split(' ')[0] +
-                      " Postuler a l'offre",
+                  "${widget.postUser[index]['location'].toString().split(' ')[0]} Postuler a l'offre",
                   style: footboldStyle(lightGreyColor),
                 ),
               ),
@@ -71,7 +70,7 @@ class _GalleryState extends State<Gallery> {
               onTap: (){
                 _onShareXFileFromAssets(context, widget.postUser[index]['description'],  widget.Username);
               },
-              child: Icon(
+              child: const Icon(
                 Icons.ios_share_outlined,
                 color: Colors.black,
               ),
@@ -88,7 +87,7 @@ void _onShareXFileFromAssets(
   final shareResult = await Share.shareXFiles(
     subject: 'Adnafrica',
     text:
-        "$name $description cette offre est disponible sur Adnafrica télécharger l\'application et postuler a l'offre avec le lien : https://www.google.com/PlayStore/Cloud/Apk/adnafrica/home/hs6772njdj883 ",
+        "$name $description cette offre est disponible sur Adnafrica télécharger l'application et postuler a l'offre avec le lien : https://www.google.com/PlayStore/Cloud/Apk/adnafrica/home/hs6772njdj883 ",
     [
       XFile.fromData(
         buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
@@ -116,13 +115,14 @@ SnackBar getResultSnackBar(ShareResult result) {
     ),
   );
 }
+  @override
   Widget build(BuildContext context) {
     print(widget.photoUrl);
 
     print(imageUrls);
     return Scaffold(
       body: imageUrls.isEmpty
-          ? Container(
+          ? SizedBox(
               width: double.infinity,
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -175,7 +175,7 @@ SnackBar getResultSnackBar(ShareResult result) {
                       // _createPhotoTitle(),
                       Stack(
                         children: [
-                          Container(
+                          SizedBox(
                               width: double.infinity,
                               height: MediaQuery.of(context).size.height / 10,
                               child: Image.network(
@@ -194,7 +194,7 @@ SnackBar getResultSnackBar(ShareResult result) {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                     ],
@@ -223,7 +223,7 @@ SnackBar getResultSnackBar(ShareResult result) {
         ),
         title: Text(
           widget.Username,
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
+          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
         ),
         trailing: GestureDetector(
           onTap: () {
@@ -233,8 +233,8 @@ SnackBar getResultSnackBar(ShareResult result) {
               width: 25,
               height: 25,
               decoration:
-                  BoxDecoration(shape: BoxShape.circle, color: errorColor),
-              child: Center(
+                  const BoxDecoration(shape: BoxShape.circle, color: errorColor),
+              child: const Center(
                   child: Icon(
                 Icons.close,
                 color: Colors.white,
@@ -244,7 +244,7 @@ SnackBar getResultSnackBar(ShareResult result) {
       ));
 
   Widget _createPopupContent(String url, int index) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16.0),
           child: Container(
@@ -254,7 +254,7 @@ SnackBar getResultSnackBar(ShareResult result) {
               children: [
                 _createPhotoTitle(),
                 Image.network(url, fit: BoxFit.fitWidth),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Padding(
@@ -274,7 +274,7 @@ SnackBar getResultSnackBar(ShareResult result) {
 }
 
 class AnimatedDialog extends StatefulWidget {
-  const AnimatedDialog({Key? key, required this.child}) : super(key: key);
+  const AnimatedDialog({super.key, required this.child});
 
   final Widget child;
 

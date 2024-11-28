@@ -42,8 +42,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           ? Container(
               width: double.infinity,
               height: MediaQuery.of(context).size.height / 3.2,
-              padding: EdgeInsets.only(top: 8, left: 16, right: 16),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.only(top: 8, left: 16, right: 16),
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
@@ -71,7 +71,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     ButtonCard1(
@@ -81,7 +81,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                           Navigator.pop(context);
                           Navigator.pushNamed(context, signUpScreenRoute);
                         }),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     ButtonCard(
@@ -98,7 +98,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 ),
               ),
             )
-          : Container(
+          : SizedBox(
               width: double.infinity,
               height: double.infinity,
               child: Column(
@@ -106,88 +106,199 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // const SizedBox(height: defaultPadding / 2),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
+                    const Padding(
+                      padding: EdgeInsets.symmetric(
                           vertical: defaultPadding / 2,
-                          horizontal: defaultPadding ),
+                          horizontal: defaultPadding),
                       child: BrandSearchForm(),
                     ),
                     // sizedBox5,
-                     Expanded(
-                       child: GridView.count(
-                        padding: EdgeInsets.all(defaultPadding),
-                        mainAxisSpacing: defaultPadding,
-                        crossAxisSpacing: defaultPadding,
-                                         crossAxisCount: 2,
-                                           semanticChildCount: kidsProducts.length,
-                                         children: [
-                                           ...kidsProducts.map((product) => CardofProduct(() {
-                                             
-                                           },product.image,product.brandName,product.title,product.price) )
-                        .toList()
-                        ]),
-                     )
+                      Container(
+                              width: double.infinity,
+                              height: MediaQuery.of(context).size.height / 4,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: const LinearGradient(colors: [
+                                    Color(0xff4BDA4A),
+                                    Color(0xff04A502)
+                                  ])),
+                              margin: const EdgeInsets.symmetric(
+                                  // vertical: defaultPadding / 2,
+                                  horizontal: defaultPadding),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: defaultPadding / 2,
+                                  horizontal: defaultPadding),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                      child: Container(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 16),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Les meilleurs produits",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyLarge!
+                                                .copyWith(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: Colors.white,
+                                                ),
+                                          ),
+                                          const Text(
+                                            "De l'Afrique vers le monde et du monde vers l'Afrique",
+                                            selectionColor: Colors.white,
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                          SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                18,
+                                          ),
+                                          Container(
+                                            width: 150,
+                                            height: 30,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(4),
+                                              color: Colors.white,
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                "Explorer maintenant",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge!
+                                                    .copyWith(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: Colors.black,
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                          sizedBox5,
+                                          Text(
+                                            "Votre espace de ventes.",
+                                            selectionColor: Colors.white,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: Colors.white,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 16, horizontal: 4),
+                                    child:
+                                        Image.asset("assets/images/image.png"),
+                                  ),
+                                ],
+                              ),
+                            ),
+                    Expanded(
+                      child: GridView.count(
+                          padding: const EdgeInsets.all(defaultPadding),
+                          mainAxisSpacing: defaultPadding,
+                          crossAxisSpacing: defaultPadding,
+                          crossAxisCount: 2,
+                          semanticChildCount: kidsProducts.length,
+                          children: [
+                            ...kidsProducts
+                                .map((product) => 
+                                CardofProduct(
+                                    () {},
+                                    product.image,
+                                    product.brandName,
+                                    product.title,
+                                    product.price
+                                    ))
+                                
+                          ]),
+                    )
                   ])),
     );
   }
-  Widget CardofProduct(VoidCallback press,String image,brandName,title,price)=>OutlinedButton(
-      onPressed: press,
-      style: OutlinedButton.styleFrom(
-        // fixedSize: const Size(140, 150),
-        padding: const EdgeInsets.all(8),
-      ),
-      child: Column(
-        children: [
-          NetworkImageWithLoader(image, radius: defaultBorderRadious),
-          IntrinsicHeight(
-            child: Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: defaultPadding / 2,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: defaultPadding / 1.2,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        (brandName.toUpperCase()).length >= 40
-                            ? (brandName.toUpperCase()).substring(0, 30) + "..."
-                            : (brandName.toUpperCase()),
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(fontSize: 10),
-                      ),
-                       Text(
-                       price.toString(),
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(fontSize: 10),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: defaultPadding / 4),
-                  Text(
-                    title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall!
-                        .copyWith(fontSize: 12),
-                  ),
-                 
-                ],
+
+  Widget CardofProduct(
+          VoidCallback press, String image, brandName, title, price) =>
+      OutlinedButton(
+        onPressed: press,
+        style: OutlinedButton.styleFrom(
+          // fixedSize: const Size(140, 150),
+          padding: const EdgeInsets.all(8),
+        ),
+        child: Column(
+          children: [
+            NetworkImageWithLoader(image, radius: defaultBorderRadious),
+            IntrinsicHeight(
+              child: Container(
+                margin: const EdgeInsets.symmetric(
+                  horizontal: defaultPadding / 2,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: defaultPadding / 1.2,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          (brandName.toUpperCase()).length >= 40
+                              ? (brandName.toUpperCase()).substring(0, 30) +
+                                  "..."
+                              : (brandName.toUpperCase()),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleSmall!
+                              .copyWith(fontSize: 10),
+                        ),
+                        Text(
+                          price.toString(),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleSmall!
+                              .copyWith(fontSize: 10),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: defaultPadding / 4),
+                    Text(
+                      title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleSmall!
+                          .copyWith(fontSize: 12),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
 }

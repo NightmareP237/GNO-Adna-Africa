@@ -1,5 +1,5 @@
 // screens/checkout/views/empty_cart_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/constants.dart';
 
 class EmptyCartScreen extends StatelessWidget {

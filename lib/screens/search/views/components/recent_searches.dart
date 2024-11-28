@@ -1,5 +1,5 @@
 // screens/search/views/components/recent_searches.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/route/screen_export.dart';
 
 import '../../../../constants.dart';

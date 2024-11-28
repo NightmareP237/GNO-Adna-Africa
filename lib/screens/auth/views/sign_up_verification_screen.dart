@@ -1,5 +1,5 @@
 // screens/auth/views/sign_up_verification_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/components/custom_modal_bottom_sheet.dart';
 import 'package:adna/constants.dart';
 import 'package:adna/route/screen_export.dart';

@@ -1,5 +1,5 @@
 // screens/product/views/added_to_cart_message_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/constants.dart';
 import 'package:adna/route/screen_export.dart';
 

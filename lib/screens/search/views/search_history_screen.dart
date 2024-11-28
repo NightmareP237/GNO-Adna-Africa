@@ -1,5 +1,5 @@
 // screens/search/views/search_history_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/constants.dart';
 
 import 'components/search_suggestion_text.dart';

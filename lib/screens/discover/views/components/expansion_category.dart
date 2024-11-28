@@ -1,5 +1,5 @@
 // screens/discover/views/components/expansion_category.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:adna/route/screen_export.dart';
 

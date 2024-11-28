@@ -1,5 +1,5 @@
 // screens/search/views/components/search_resulats.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/components/product/product_card.dart';
 import 'package:adna/models/product_model.dart';
 import 'package:adna/route/screen_export.dart';

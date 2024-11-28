@@ -93,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           (FirebaseAuth.instance.currentUser!.displayName == null ||
                   FirebaseAuth.instance.currentUser!.displayName!.isEmpty)
               ? // ),
-              Container(
+              SizedBox(
                   height: MediaQuery.of(context).size.height / 1.2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -102,8 +102,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Container(
                         width: double.infinity,
                         height: MediaQuery.of(context).size.height / 3.2,
-                        padding: EdgeInsets.only(top: 8, left: 16, right: 16),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.only(top: 8, left: 16, right: 16),
+                        decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(20),
@@ -114,7 +114,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text('Aucun compte actif !'),
+                              const Text('Aucun compte actif !'),
                               SizedBox(
                                 height: MediaQuery.of(context).size.height / 80,
                               ),
@@ -126,7 +126,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     Navigator.pushNamed(
                                         context, signUpScreenRoute);
                                   }),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               ButtonCard(
@@ -164,7 +164,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (_) => HistoriqueScreen()));
+                                builder: (_) => const HistoriqueScreen()));
                       },
                     ),
                     // ProfileMenuListTile(
@@ -287,7 +287,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => LoginScreen()));
+                                    builder: (_) => const LoginScreen()));
                           }
                         });
                             });

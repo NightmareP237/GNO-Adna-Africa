@@ -140,20 +140,20 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                     backgroundColor: Theme.of(
                                                             context)
                                                         .scaffoldBackgroundColor,
-                                                    shape: RoundedRectangleBorder(
+                                                    shape: const RoundedRectangleBorder(
                                                         borderRadius:
                                                             BorderRadius.all(
                                                                 Radius.circular(
                                                                     16.0))),
                                                     contentPadding:
-                                                        EdgeInsets.all(10),
+                                                        const EdgeInsets.all(10),
                                                     content:
                                                         SingleChildScrollView(
                                                       child: Column(
                                                         children: [
                                                           Container(
                                                             padding:
-                                                                EdgeInsets.only(
+                                                                const EdgeInsets.only(
                                                                     top: 24,
                                                                     left: 24,
                                                                     right: 24,
@@ -187,7 +187,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                                           context)
                                                                       .scaffoldBackgroundColor,
                                                                   borderRadius:
-                                                                      BorderRadius.all(
+                                                                      const BorderRadius.all(
                                                                           Radius.circular(
                                                                               8.0)),
                                                                   boxShadow: [
@@ -202,7 +202,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                                       blurRadius:
                                                                           4,
                                                                       offset:
-                                                                          Offset(
+                                                                          const Offset(
                                                                               0,
                                                                               2),
                                                                     ),
@@ -210,7 +210,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                                 ),
                                                                 child: Padding(
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               8.0),
                                                                   child: Row(
@@ -225,19 +225,19 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                                           color:
                                                                               primaryColor,
                                                                           borderRadius:
-                                                                              BorderRadius.all(Radius.circular(50.0)),
+                                                                              const BorderRadius.all(Radius.circular(50.0)),
                                                                           boxShadow: [
                                                                             BoxShadow(
                                                                               color: Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(.4),
                                                                               blurRadius: 4,
-                                                                              offset: Offset(0, 4),
+                                                                              offset: const Offset(0, 4),
                                                                             ),
                                                                           ],
                                                                         ),
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(7.0),
+                                                                              const EdgeInsets.all(7.0),
                                                                           child:
                                                                               SvgPicture.asset(
                                                                             "assets/icons/camera.svg",
@@ -249,7 +249,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsets.only(
+                                                                        padding: const EdgeInsets.only(
                                                                             left:
                                                                                 16.0,
                                                                             right:
@@ -276,7 +276,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                                   ),
                                                                 )),
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             height: 16,
                                                           ),
                                                           GestureDetector(
@@ -295,7 +295,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                                           context)
                                                                       .scaffoldBackgroundColor,
                                                                   borderRadius:
-                                                                      BorderRadius.all(
+                                                                      const BorderRadius.all(
                                                                           Radius.circular(
                                                                               8.0)),
                                                                   boxShadow: [
@@ -310,7 +310,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                                       blurRadius:
                                                                           4,
                                                                       offset:
-                                                                          Offset(
+                                                                          const Offset(
                                                                               0,
                                                                               2),
                                                                     ),
@@ -318,7 +318,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                                 ),
                                                                 child: Padding(
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               8.0),
                                                                   child: Row(
@@ -333,19 +333,19 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                                           color:
                                                                               primaryColor,
                                                                           borderRadius:
-                                                                              BorderRadius.all(Radius.circular(50.0)),
+                                                                              const BorderRadius.all(Radius.circular(50.0)),
                                                                           boxShadow: [
                                                                             BoxShadow(
                                                                               color: Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(.4),
                                                                               blurRadius: 4,
-                                                                              offset: Offset(0, 4),
+                                                                              offset: const Offset(0, 4),
                                                                             ),
                                                                           ],
                                                                         ),
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(7.0),
+                                                                              const EdgeInsets.all(7.0),
                                                                           child:
                                                                               SvgPicture.asset(
                                                                             "assets/icons/gallery.svg",
@@ -357,7 +357,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsets.only(
+                                                                        padding: const EdgeInsets.only(
                                                                             left:
                                                                                 16.0,
                                                                             right:
@@ -384,7 +384,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                                                   ),
                                                                 )),
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             height: 16,
                                                           )
                                                         ],
@@ -408,7 +408,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                   ),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 12,
                               ),
                               const Text(
@@ -417,7 +417,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                               )
                             ],
                           ),
-                          SizedBox(height: defaultPadding),
+                          const SizedBox(height: defaultPadding),
                           Form(
                             child: Column(
                               children: [
@@ -457,7 +457,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                       });
                                     },
                                     child: Container(
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: defaultPadding * 0.75,
                                           vertical: defaultPadding * 0.25),
                                       decoration: BoxDecoration(
@@ -578,7 +578,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                             // margin: EdgeInsets.symmetric(
                             //     vertical: MediaQuery.of(context).size.width * .02,
                             //     horizontal: 16),
-                            child: Container(
+                            child: SizedBox(
                               height: MediaQuery.of(context).size.width * .12,
                               width: double.infinity,
                               child: Container(
@@ -741,7 +741,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                             height: defaultPadding,
                           ),
                           !_swicth
-                              ? SizedBox()
+                              ? const SizedBox()
                               : Column(children: [
                                   TextFormField(
                                     onChanged: (val) {
@@ -769,7 +769,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 16,
                                   ),
                                   TextFormField(
@@ -876,7 +876,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
               width: double.infinity,
               color: Colors.black.withOpacity(.3),
               child: Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   left: 20,
                   top: 200,
                   right: 20,
@@ -905,7 +905,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                   },
                   selectionMode: DateRangePickerSelectionMode.multiple,
                   initialDisplayDate:
-                      DateTime.now().subtract(Duration(days: 10000)),
+                      DateTime.now().subtract(const Duration(days: 10000)),
                 ),
               ),
             ),

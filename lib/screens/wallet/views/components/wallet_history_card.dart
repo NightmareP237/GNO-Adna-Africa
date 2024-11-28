@@ -1,5 +1,5 @@
 // screens/wallet/views/components/wallet_history_card.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:adna/components/product/secondary_product_card.dart';
 

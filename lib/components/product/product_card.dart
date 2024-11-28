@@ -28,7 +28,7 @@ class ProductCard extends StatelessWidget {
     required this.press,
     required this.press1,
     required this.press2,
-      this.docid='',
+    this.docid = '',
   });
   final String image, brandName, title;
   final double price;
@@ -37,7 +37,7 @@ class ProductCard extends StatelessWidget {
   final String? date;
   final String docid;
   bool asset, delete;
-  final VoidCallback press,press1,press2;
+  final VoidCallback press, press1, press2;
 //  late String uid=FirebaseAuth.instance.currentUser!.uid.toString();
   @override
   Widget build(BuildContext context) {
@@ -51,57 +51,60 @@ class ProductCard extends StatelessWidget {
         children: [
           Stack(
             children: [
-             
               asset
                   ? Image.asset(image)
                   : NetworkImageWithLoader(image, radius: defaultBorderRadious),
               // if (dicountpercent != null)
               Positioned(
-                      right: defaultPadding / 2,
-                      top: defaultPadding / 2,
-                      child: InkWell(
-                        onTap: press1,
-                        child: Container(
-                          width: 30,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color:delete?Colors.red.shade100: Colors.grey.shade300,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Center(
-                            child: Icon(
-                            delete?Icons.delete_forever_rounded:  Icons.favorite_border_rounded,
-                              color: delete?Colors.black:primaryColor,
-                              size: 18,
-                            ),
-                          ),
-                        ),
+                right: defaultPadding / 2,
+                top: defaultPadding / 2,
+                child: InkWell(
+                  onTap: press1,
+                  child: Container(
+                    width: 30,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      color:
+                          delete ? Colors.red.shade100 : Colors.grey.shade300,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        delete
+                            ? Icons.delete_forever_rounded
+                            : Icons.favorite_border_rounded,
+                        color: delete ? Colors.black : primaryColor,
+                        size: 18,
                       ),
                     ),
-                 
+                  ),
+                ),
+              ),
+
               Positioned(
-                      left: defaultPadding / 2,
-                      top: defaultPadding / 2,
-                      child: GestureDetector(
-                        onTap:press2,
-                        child: Container(
-                          width: 30,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade300,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Center(
-                            child: Icon(
-                              color: delete?Theme.of(context).iconTheme.color:primaryColor,
-                             delete?Icons.edit: Icons.ios_share_rounded,
-                              size: 18,
-                            ),
-                          ),
-                        ),
+                left: defaultPadding / 2,
+                top: defaultPadding / 2,
+                child: GestureDetector(
+                  onTap: press2,
+                  child: Container(
+                    width: 30,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade300,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        color: delete
+                            ? Theme.of(context).iconTheme.color
+                            : primaryColor,
+                        delete ? Icons.edit : Icons.ios_share_rounded,
+                        size: 18,
                       ),
-                    )
-                 
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
           IntrinsicHeight(
@@ -113,13 +116,13 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: defaultPadding / 1.2,
                   ),
 
                   Text(
                     (brandName.toUpperCase()).length >= 25
-                        ? (brandName.toUpperCase()).substring(0, 18) + "..."
+                        ? "${(brandName.toUpperCase()).substring(0, 18)}..."
                         : (brandName.toUpperCase()),
                     style: Theme.of(context)
                         .textTheme
@@ -163,7 +166,7 @@ class ProductCard extends StatelessWidget {
                   //         ],
                   //       )
                   //     :
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Text(
@@ -174,7 +177,7 @@ class ProductCard extends StatelessWidget {
                       fontSize: 10,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: defaultPadding / 2.5,
                   ),
 
@@ -220,7 +223,7 @@ class ProductCard extends StatelessWidget {
 
                   //   ],
                   // ),
-                  SizedBox(
+                  const SizedBox(
                     height: defaultPadding / 2,
                   ),
                   // GestureDetector(
@@ -260,12 +263,11 @@ class ProductCard extends StatelessWidget {
 
 class ButtonCard extends StatelessWidget {
   ButtonCard(
-      {Key? key,
+      {super.key,
       required this.label,
       required this.isOutline,
       required this.onTap,
-      this.isDisabled = false})
-      : super(key: key);
+      this.isDisabled = false});
   final String label;
   final bool isOutline;
   final bool isDisabled;
@@ -304,12 +306,11 @@ class ButtonCard extends StatelessWidget {
 
 class ButtonCard1 extends StatelessWidget {
   ButtonCard1(
-      {Key? key,
+      {super.key,
       required this.label,
       required this.isOutline,
       required this.onTap,
-      this.isDisabled = false})
-      : super(key: key);
+      this.isDisabled = false});
   final String label;
   final bool isOutline;
   final bool isDisabled;
@@ -458,18 +459,17 @@ TextStyle failedStyle(Color c) => TextStyle(
     color: c);
 
 class PopularAccount extends StatelessWidget {
-  const PopularAccount({
-    super.key,
-    required this.image,
-    this.rate = 1,
-    required this.brandName,
-    // required this.title,
-    // required this.location,
-    this.priceAfetDiscount,
-    this.dicountpercent,
-    required this.press,
-    this.isAsset=false
-  });
+  const PopularAccount(
+      {super.key,
+      required this.image,
+      this.rate = 1,
+      required this.brandName,
+      // required this.title,
+      // required this.location,
+      this.priceAfetDiscount,
+      this.dicountpercent,
+      required this.press,
+      this.isAsset = false});
   final String image, brandName;
   final double? priceAfetDiscount;
   final int? dicountpercent;
@@ -489,18 +489,18 @@ class PopularAccount extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: defaultPadding / 4,
           ),
           //  if (dicountpercent != null)
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 12),
+            margin: const EdgeInsets.symmetric(horizontal: 12),
             // width: 0,
             padding: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
             height: 16,
             decoration: BoxDecoration(
               color: Colors.grey.shade200,
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(defaultBorderRadious),
               ),
             ),
@@ -522,17 +522,32 @@ class PopularAccount extends StatelessWidget {
                       ))
             ]),
           ),
-          SizedBox(
+          const SizedBox(
             height: defaultPadding / 2,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-            isAsset?Image.asset(image) : NetworkImageWithLoader(image,radius: 120,isprofil: true,),
+              isAsset
+                  ? Image.asset(image)
+                  : image.isEmpty
+                      ? Container(
+                          width: 60,
+                          height: 60,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: Image.asset('assets/images/user-flat.png'),
+                        )
+                      : NetworkImageWithLoader(
+                          image,
+                          radius: 120,
+                          isprofil: true,
+                        ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: defaultPadding / 2,
           ),
           Padding(
@@ -540,7 +555,7 @@ class PopularAccount extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: defaultPadding / 2,
                 ),
                 Container(
@@ -556,11 +571,15 @@ class PopularAccount extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("Pro ",style: footnoteStyle(Theme.of(context).textTheme.headlineSmall!.color!),),
+                      Text(
+                        "Pro ",
+                        style: footnoteStyle(
+                            Theme.of(context).textTheme.headlineSmall!.color!),
+                      ),
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: defaultPadding / 2,
                 ),
                 Text(

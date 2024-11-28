@@ -1,5 +1,5 @@
 // screens/wallet/views/wallet_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/constants.dart';
 import 'package:adna/models/product_model.dart';
 

@@ -1,7 +1,6 @@
 // components/Banner/M/banner_m_style_2.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../banner_discount_tag.dart';
 import 'banner_m.dart';
 
 import '../../../constants.dart';

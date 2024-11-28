@@ -1,5 +1,5 @@
 // screens/brand/views/components/brand_search_form.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:adna/theme/input_decoration_theme.dart';
 
@@ -17,7 +17,7 @@ class BrandSearchForm extends StatelessWidget {
           return null;
         },
         decoration: InputDecoration(
-          hintText: "Recherche un produit...",
+          hintText: "Recherchez tout ce que vous souhaiter...",
           filled: false,
           border: secodaryOutlineInputBorder(context),
           enabledBorder: secodaryOutlineInputBorder(context),

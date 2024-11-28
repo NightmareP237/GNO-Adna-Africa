@@ -128,7 +128,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                 ListTile(
                   leading: const Text("Profil complet"),
                   trailing: TextButton(
-                    style: ButtonStyle(
+                    style: const ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(primaryColor)),
                     onPressed: () {
                       Navigator.push(
@@ -150,7 +150,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                   textColor: errorColor,
                   leading: const Text("Supprimer mon compte"),
                   trailing: TextButton(
-                    style: ButtonStyle(
+                    style: const ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(errorColor)),
                     onPressed: () {
                       showAlertDialog2(
@@ -178,7 +178,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => StatutAuth()),
+                                      builder: (_) => const StatutAuth()),
                                   (route) => false);
                             });
                           });

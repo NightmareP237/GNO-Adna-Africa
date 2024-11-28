@@ -64,7 +64,7 @@ class _ProductBuyNowScreenState extends State<ProductBuyNowScreen> {
               slivers: [
                  SliverToBoxAdapter(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: defaultPadding),
+                    padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
                     child: AspectRatio(
                       aspectRatio: 1.05,
                       child: NetworkImageWithLoader(productDemoImg1),

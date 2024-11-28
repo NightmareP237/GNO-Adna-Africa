@@ -1,5 +1,5 @@
 // screens/discover/views/discover_with_image_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/constants.dart';
 import 'package:adna/models/category_model.dart';
 import 'package:adna/route/screen_export.dart';

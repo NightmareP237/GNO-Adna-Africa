@@ -29,7 +29,7 @@ class _NewChatState extends State<NewChat> {
       });
       final db = FirebaseFirestore.instance;
       db.collection("users").get().then((value) {
-        value.docs.forEach((element) {
+        for (var element in value.docs) {
           print(element.data());
           print(element.id);
          var value= UserInfoView.fromDocumentSnapshot(element, element.id);
@@ -43,7 +43,7 @@ class _NewChatState extends State<NewChat> {
           setState(() {
             loading = false;
           });
-        });
+        }
       });
     } catch (e) {
       print(e);
@@ -165,7 +165,7 @@ class _NewChatState extends State<NewChat> {
                     scrollDirection: Axis.horizontal,
                     itemCount: users.length,
                     itemBuilder: (context, index) => users[index].image.isEmpty
-                        ? SizedBox()
+                        ? const SizedBox()
                         : InkWell(
                             onTap: () {
                               Navigator.push(
@@ -197,7 +197,7 @@ class _NewChatState extends State<NewChat> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 4,
                                 ),
                                 Text(
@@ -209,7 +209,7 @@ class _NewChatState extends State<NewChat> {
                           ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: defaultPadding,
                 ),
                 Text("Nouveau profil",
@@ -221,7 +221,7 @@ class _NewChatState extends State<NewChat> {
                     itemCount: searchUsers.length,
                     // itemExtent: 4,
                     itemBuilder: (context, index) => Container(
-                      margin: EdgeInsets.symmetric(vertical: 4),
+                      margin: const EdgeInsets.symmetric(vertical: 4),
                       decoration: BoxDecoration(
                         color: Theme.of(context)
                             .iconTheme
@@ -240,7 +240,7 @@ class _NewChatState extends State<NewChat> {
                                           user: searchUsers[index],
                                         )));
                           },
-                          label: Text("Disussion"),
+                          label: const Text("Disussion"),
                         ),
                         title: Row(
                           children: [

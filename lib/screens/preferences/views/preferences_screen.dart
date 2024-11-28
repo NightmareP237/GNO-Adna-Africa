@@ -1,5 +1,5 @@
 // screens/preferences/views/preferences_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/constants.dart';
 
 import 'components/prederence_list_tile.dart';

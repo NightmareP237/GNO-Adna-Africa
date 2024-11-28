@@ -1,5 +1,5 @@
 // screens/reviews/view/components/user_review_card.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:adna/components/network_image_with_loader.dart';

@@ -1,5 +1,5 @@
 // screens/product/views/components/color_dot.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/components/check_mark.dart';
 
 import '../../../../constants.dart';

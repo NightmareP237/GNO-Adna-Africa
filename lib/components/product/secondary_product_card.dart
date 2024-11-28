@@ -1,3 +1,4 @@
+// components/product/secondary_product_card.dart
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -20,7 +21,6 @@ class SecondaryProductCard extends StatelessWidget {
   final double? priceAfetDiscount;
   final int? dicountpercent;
   final VoidCallback? press;
-
   final ButtonStyle? style;
 
   @override

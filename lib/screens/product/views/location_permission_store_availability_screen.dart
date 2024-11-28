@@ -1,5 +1,5 @@
 // screens/product/views/location_permission_store_availability_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:adna/theme/input_decoration_theme.dart';
 

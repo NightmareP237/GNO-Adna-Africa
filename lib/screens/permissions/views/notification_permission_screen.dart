@@ -1,5 +1,5 @@
 // screens/permissions/views/notification_permission_screen.dart
-import 'package:flutter/cupertino.dart';import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:adna/constants.dart';

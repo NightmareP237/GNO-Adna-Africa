@@ -26,7 +26,7 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
     ) {
   return Container(
     width: double.infinity,
-    decoration: BoxDecoration(color: Colors.white),
+    decoration: const BoxDecoration(color: Colors.white),
     child: Padding(
       padding: const EdgeInsets.only(
         left: 18.0,
@@ -35,7 +35,7 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
@@ -44,7 +44,7 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
             children: [
               CircleAvatar(
                 radius: 40,
-                backgroundColor: Color(0xff74EDED),
+                backgroundColor: const Color(0xff74EDED),
                 backgroundImage: NetworkImage(img.isEmpty
                     ? "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
                     : img),
@@ -55,12 +55,12 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
                     children: [
                       Text(
                         postNumber.toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Text(
+                      const Text(
                         "Posts",
                         style: TextStyle(
                           fontSize: 15,
@@ -69,19 +69,19 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 30,
                   ),
                   Column(
                     children: [
                       Text(
                         followers.length.toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Text(
+                      const Text(
                         "Followers",
                         style: TextStyle(
                           letterSpacing: 0.4,
@@ -90,20 +90,20 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 30,
                   ),
                   Column(
                     children: [
                       Text(
                         sharing,
-                        style: TextStyle(
+                        style: const TextStyle(
                           letterSpacing: 0.4,
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Text(
+                      const Text(
                         "Partages",
                         style: TextStyle(
                           letterSpacing: 0.4,
@@ -112,14 +112,14 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
                 ],
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Row(
@@ -127,7 +127,7 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
             children: [
               Text(
                 name,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black87,
                   fontWeight: FontWeight.w600,
                   fontSize: 16,
@@ -144,7 +144,7 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
                   borderRadius:
                       BorderRadius.all(Radius.circular(defaultBorderRadious)),
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -162,7 +162,7 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 4,
           ),
           Row(
@@ -170,11 +170,11 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
             children: [
               Text(
                 country,
-                style: TextStyle(
+                style: const TextStyle(
                   letterSpacing: 0.4,
                 ),
               ),
-              Text(
+              const Text(
                 "Compte professionel",
                 style: TextStyle(
                     letterSpacing: 0.2,
@@ -184,7 +184,7 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -192,30 +192,9 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
             children: [
               Expanded(
                 child: OutlinedButton(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                         !followers.contains(FirebaseAuth.instance.currentUser!.uid)
-                              ? Icons.add_circle_outline_rounded
-                              : Icons.check,
-                          size: 20,
-                          color:  !followers.contains(FirebaseAuth.instance.currentUser!.uid) ? primaryColor : greyColor,
-                        ),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        Text( !followers.contains(FirebaseAuth.instance.currentUser!.uid) ? "Suivre" : "Suivi(e)",
-                            style: TextStyle(
-                                color:  !followers.contains(FirebaseAuth.instance.currentUser!.uid) ? primaryColor : greyColor)),
-                      ],
-                    ),
-                  ),
                   style: OutlinedButton.styleFrom(
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      minimumSize: Size(0, 30),
+                      minimumSize: const Size(0, 30),
                       side: BorderSide(
                         color:  !followers.contains(FirebaseAuth.instance.currentUser!.uid) ? primaryColor : greyColor,
                       )),
@@ -240,10 +219,42 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
                               ),
                             ));
                             print("User Added");
-                          })
+                          },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                         !followers.contains(FirebaseAuth.instance.currentUser!.uid)
+                              ? Icons.add_circle_outline_rounded
+                              : Icons.check,
+                          size: 20,
+                          color:  !followers.contains(FirebaseAuth.instance.currentUser!.uid) ? primaryColor : greyColor,
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text( !followers.contains(FirebaseAuth.instance.currentUser!.uid) ? "Suivre" : "Suivi(e)",
+                            style: TextStyle(
+                                color:  !followers.contains(FirebaseAuth.instance.currentUser!.uid) ? primaryColor : greyColor)),
+                      ],
+                    ),
+                  ))
               ),
               Expanded(
                 child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    backgroundColor: primaryColor,
+                    minimumSize: const Size(0, 30),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => ChatPage(user: user)));
+                  },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Row(
@@ -261,25 +272,14 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
                       ],
                     ),
                   ),
-                  style: OutlinedButton.styleFrom(
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    backgroundColor: primaryColor,
-                    minimumSize: Size(0, 30),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => ChatPage(user: user)));
-                  },
                 ),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
-          Text(
+          const Text(
             "Centres d'interets",
             style: TextStyle(
                 letterSpacing: 0.2,
@@ -287,10 +287,10 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
                 fontSize: 16,
                 fontWeight: FontWeight.w700),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
-          Container(
+          SizedBox(
             height: 85,
             child: ListView.builder(
               shrinkWrap: true,
@@ -302,6 +302,13 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
                     Column(
                       children: [
                         OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              minimumSize: const Size(0, 30),
+                              side: BorderSide(
+                                color: Colors.grey[400]!,
+                              )),
+                          onPressed: () {},
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 5),
                             child: Row(
@@ -320,17 +327,10 @@ Widget profileHeaderWidget(BuildContext context, UserInfoView user, String img,
                               ],
                             ),
                           ),
-                          style: OutlinedButton.styleFrom(
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              minimumSize: Size(0, 30),
-                              side: BorderSide(
-                                color: Colors.grey[400]!,
-                              )),
-                          onPressed: () {},
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     )
                   ],

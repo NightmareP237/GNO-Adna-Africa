@@ -1,6 +1,5 @@
 // screens/onbording/views/components/onbording_content.dart
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
 

@@ -11,7 +11,7 @@ import 'package:adna/constants.dart';
 import 'package:adna/route/route_constants.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
 import 'components/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -170,11 +170,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       //     },
                       //   ),
                       // ),
-                      SizedBox(
-                        height: size.height > 700
-                            ? size.height * 0.02
-                            : defaultPadding,
+                        Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, passwordRecoveryScreenRoute);
+                            },
+                            child: const Text("Mot de passe oublie?"),
+                          )
+                        ],
                       ),
+                      // SizedBox(
+                      //   height: size.height > 700
+                      //       ? size.height * 0.02
+                      //       : defaultPadding,
+                      // ),
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
@@ -213,7 +225,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) => EntryPoint()),
+                                          builder: (_) => const EntryPoint()),
                                       (close) => false);
                                 } else {
                                   setState(() {
@@ -237,6 +249,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         child: const Text("Connexion"),
                       ),
+                      sizedBox20,
+                      const SocialButton(
+                        social: "google",
+                        fcmToken: "",
+                      ),
+                      sizedBox10,
+                      const SocialButton(social: "facebook", fcmToken: ""),
+                      sizedBox5,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -251,7 +271,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -259,6 +279,102 @@ class _LoginScreenState extends State<LoginScreen> {
         // ignore: dead_code
         if (loading) LoadingComponent()
       ],
+    );
+  }
+}
+
+class SocialButton extends StatefulWidget {
+  const SocialButton({super.key, required this.social, required this.fcmToken});
+
+  final String social, fcmToken;
+
+  @override
+  State<SocialButton> createState() => _SocialButtonState();
+}
+
+class _SocialButtonState extends State<SocialButton> {
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        side: const BorderSide(width: 1, color: Colors.black),
+      ),
+      onPressed: () async{
+        if (widget.social == "google") {
+          // Future<UserCredential> signInWithGoogle() async {
+            AuthServices().signOut();
+            print("Disconnection of account...");
+            // Trigger the authentication flow
+
+            //  if (googleAuth != null) {
+            // }
+            final GoogleSignInAccount? googleUser =
+                await GoogleSignIn().signIn();
+
+            // Obtain the auth details from the request
+            final GoogleSignInAuthentication? googleAuth =
+                await googleUser?.authentication;
+
+            // Create a new credential
+            final credential = GoogleAuthProvider.credential(
+              accessToken: googleAuth?.accessToken,
+              idToken: googleAuth?.idToken,
+            );
+            //  if (googleAuth != null) {
+            //   AuthServices().signOut();
+            // }
+            // Once signed in, return the UserCredential
+            var resultAuth =
+                await FirebaseAuth.instance.signInWithCredential(credential);
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              backgroundColor: Colors.green,
+              content: Text(
+                "Connexion reussi !",
+                style: TextStyle(color: Colors.white),
+              ),
+            ));
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (_) => const EntryPoint()),
+                (close) => false);
+            // return resultAuth;
+          // }
+
+          // showAlertDialog(
+          //     isError: true,
+          //     context: context,
+          //     title: "Erreur",
+          //     body: "Aucune ou mauvaise connexion internet !");
+        }else{
+          // ignore: avoid_print
+          showAlertDialog(
+              isError: true,
+              context: context,
+              title: "Erreur",
+              body: "Connexion par facebook indisponible pour l'instand !"
+              );
+        }
+      },
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.4,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Image.asset(
+              'assets/images/${widget.social}.png',
+              width: 40,
+              height: 40,
+            ),
+            Text(
+              widget.social.toUpperCase(),
+              style: const TextStyle(
+                color: Colors.black,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

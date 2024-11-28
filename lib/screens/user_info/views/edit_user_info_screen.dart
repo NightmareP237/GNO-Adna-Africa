@@ -130,15 +130,15 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                           return AlertDialog(
                                             backgroundColor: Theme.of(context)
                                                 .scaffoldBackgroundColor,
-                                            shape: RoundedRectangleBorder(
+                                            shape: const RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(16.0))),
-                                            contentPadding: EdgeInsets.all(10),
+                                            contentPadding: const EdgeInsets.all(10),
                                             content: SingleChildScrollView(
                                               child: Column(
                                                 children: [
                                                   Container(
-                                                    padding: EdgeInsets.only(
+                                                    padding: const EdgeInsets.only(
                                                         top: 24,
                                                         left: 24,
                                                         right: 24,
@@ -168,7 +168,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                                   context)
                                                               .scaffoldBackgroundColor,
                                                           borderRadius:
-                                                              BorderRadius.all(
+                                                              const BorderRadius.all(
                                                                   Radius
                                                                       .circular(
                                                                           8.0)),
@@ -183,13 +183,13 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                                       .4),
                                                               blurRadius: 4,
                                                               offset:
-                                                                  Offset(0, 2),
+                                                                  const Offset(0, 2),
                                                             ),
                                                           ],
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsets.all(
+                                                              const EdgeInsets.all(
                                                                   8.0),
                                                           child: Row(
                                                             children: [
@@ -201,7 +201,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                                   color:
                                                                       primaryColor,
                                                                   borderRadius:
-                                                                      BorderRadius.all(
+                                                                      const BorderRadius.all(
                                                                           Radius.circular(
                                                                               50.0)),
                                                                   boxShadow: [
@@ -216,7 +216,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                                       blurRadius:
                                                                           4,
                                                                       offset:
-                                                                          Offset(
+                                                                          const Offset(
                                                                               0,
                                                                               4),
                                                                     ),
@@ -224,7 +224,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                                 ),
                                                                 child: Padding(
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               7.0),
                                                                   child:
@@ -239,7 +239,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsets
+                                                                padding: const EdgeInsets
                                                                     .only(
                                                                         left:
                                                                             16.0,
@@ -276,7 +276,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                           ),
                                                         )),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 16,
                                                   ),
                                                   GestureDetector(
@@ -293,7 +293,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                                   context)
                                                               .scaffoldBackgroundColor,
                                                           borderRadius:
-                                                              BorderRadius.all(
+                                                              const BorderRadius.all(
                                                                   Radius
                                                                       .circular(
                                                                           8.0)),
@@ -308,13 +308,13 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                                       .4),
                                                               blurRadius: 4,
                                                               offset:
-                                                                  Offset(0, 2),
+                                                                  const Offset(0, 2),
                                                             ),
                                                           ],
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsets.all(
+                                                              const EdgeInsets.all(
                                                                   8.0),
                                                           child: Row(
                                                             children: [
@@ -326,7 +326,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                                   color:
                                                                       primaryColor,
                                                                   borderRadius:
-                                                                      BorderRadius.all(
+                                                                      const BorderRadius.all(
                                                                           Radius.circular(
                                                                               50.0)),
                                                                   boxShadow: [
@@ -341,7 +341,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                                       blurRadius:
                                                                           4,
                                                                       offset:
-                                                                          Offset(
+                                                                          const Offset(
                                                                               0,
                                                                               4),
                                                                     ),
@@ -349,7 +349,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                                 ),
                                                                 child: Padding(
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               7.0),
                                                                   child:
@@ -364,7 +364,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsets
+                                                                padding: const EdgeInsets
                                                                     .only(
                                                                         left:
                                                                             16.0,
@@ -401,7 +401,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                                                           ),
                                                         )),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 16,
                                                   )
                                                 ],
@@ -612,7 +612,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => EntryPoint()),
+                                      builder: (_) => const EntryPoint()),
                                   (close) => false);
 
                               print("User updated !");
@@ -662,7 +662,7 @@ class _EditUserInfoScreenState extends State<EditUserInfoScreen> {
                           ));
                           Navigator.pushAndRemoveUntil(
                               context,
-                              MaterialPageRoute(builder: (_) => EntryPoint()),
+                              MaterialPageRoute(builder: (_) => const EntryPoint()),
                               (close) => false);
                           print("User updated !");
                         });

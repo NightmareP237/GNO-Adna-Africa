@@ -1,5 +1,5 @@
 // screens/support/views/get_help_screen.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:adna/components/chat_active_dot.dart';
 import 'package:adna/constants.dart';

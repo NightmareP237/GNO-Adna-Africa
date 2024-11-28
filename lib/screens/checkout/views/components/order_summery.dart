@@ -1,5 +1,5 @@
 // screens/checkout/views/components/order_summery.dart
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:adna/screens/order/views/components/order_summary_card.dart';
 
 import '../../../../constants.dart';

@@ -1,6 +1,5 @@
 // models/user_model.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 class UserInfoView {
   String name,birthday,phoneNumber,country,email,image,uid;

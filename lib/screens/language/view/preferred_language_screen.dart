@@ -121,7 +121,7 @@ class _PreferredLanguageScreenState extends State<PreferredLanguageScreen> {
                           });
                           Navigator.pushAndRemoveUntil(
                             context,
-                            MaterialPageRoute(builder: (_) => EntryPoint()),
+                            MaterialPageRoute(builder: (_) => const EntryPoint()),
                             (route) => false,
                           );
                         } else {
@@ -143,7 +143,7 @@ class _PreferredLanguageScreenState extends State<PreferredLanguageScreen> {
                   });
                 },
                 child: loading
-                    ? CircularProgressIndicator(
+                    ? const CircularProgressIndicator(
                         strokeWidth: 1.4,
                         color: Colors.white,
                       )

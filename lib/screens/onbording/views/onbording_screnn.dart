@@ -32,7 +32,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
 
   @override
   Widget build(BuildContext context) {
-      List<Onbord> _onbordData = [
+      List<Onbord> onbordData = [
    Onbord(
       image: "assets/images/adna-hd.png",
       imageDarkTheme: "assets/images/adna-hd.png",
@@ -94,7 +94,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                 child: Container(
                   child: PageView.builder(
                     controller: _pageController,
-                    itemCount: _onbordData.length,
+                    itemCount: onbordData.length,
                     onPageChanged: (value) {
                       setState(() {
                         _pageIndex = value;
@@ -102,12 +102,12 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                     },
                     itemBuilder: (context, index) => OnbordingContent(
                       istack:index==0? true:false,
-                      title: _onbordData[index].title,
-                      description: _onbordData[index].description,
+                      title: onbordData[index].title,
+                      description: onbordData[index].description,
                       image: (Theme.of(context).brightness == Brightness.dark &&
-                              _onbordData[index].imageDarkTheme != null)
-                          ? _onbordData[index].imageDarkTheme!
-                          : _onbordData[index].image,
+                              onbordData[index].imageDarkTheme != null)
+                          ? onbordData[index].imageDarkTheme!
+                          : onbordData[index].image,
                       isTextOnTop: index.isOdd,
                     ),
                   ),
@@ -116,7 +116,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
               Row(
                 children: [
                   ...List.generate(
-                    _onbordData.length,
+                    onbordData.length,
                     (index) => Padding(
                       padding: const EdgeInsets.only(right: defaultPadding / 4),
                       child: DotIndicator(isActive: index == _pageIndex),
@@ -128,7 +128,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                     width: 60,
                     child: ElevatedButton(
                       onPressed: () {
-                        if (_pageIndex < _onbordData.length - 1) {
+                        if (_pageIndex < onbordData.length - 1) {
                           _pageController.nextPage(
                               curve: Curves.ease, duration: defaultDuration);
                         } else {

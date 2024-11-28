@@ -1,7 +1,6 @@
 // statut-auth.dart
 import 'package:adna/database/Auth.dart';
 import 'package:adna/entry_point.dart';
-import 'package:adna/screens/auth/views/verification_method_screen.dart';
 import 'package:adna/screens/onbording/views/onbording_screnn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

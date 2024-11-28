@@ -1,5 +1,5 @@
 // screens/product/views/shipping_methods_screen.dart
-import 'package:flutter/gestures.dart';import 'package:flutter/gestures.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:adna/constants.dart';

@@ -149,7 +149,7 @@ class CategoryBtn extends StatelessWidget {
                     : Theme.of(context).textTheme.bodyLarge!.color,
               ),
             ),
-            SizedBox(width: 8,),
+            const SizedBox(width: 8,),
             Container(width: 20,height: 20,decoration: BoxDecoration(color: col,shape: BoxShape.circle),)
           ],
         ),
